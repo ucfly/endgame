@@ -23,16 +23,16 @@ typedef struct world {
 
 typedef struct s_state {
     t_world plane;
-    t_world world;
+    t_world gate;
 }              t_state;
 
 // funcs
 char *mx_strcpy(char *dst, const char *src);
 
 int mx_strlen(const char *s);
-int mx_process_events(SDL_Window *window, t_world *plane);
+int mx_process_events(SDL_Window *window, t_state *game);
 
 void mx_err_check(void *target);
 void mx_printerr(const char *s);
-void mx_do_render(SDL_Renderer *rend, t_world *plane, t_world *world);
-void mx_scale_gate(t_world *gate);
+void mx_do_render(SDL_Renderer *rend, t_state *game);
+void mx_scale_gate(t_state *game);

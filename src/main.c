@@ -5,7 +5,7 @@ int main(void) {
     SDL_Renderer *rend = NULL;
     SDL_Window *wind = NULL;
     // t_world plane = {160, 220, 200, 50};
-    t_world world = {50, 50, 100, 50};
+    // t_world world = {50, 50, 100, 50};
 
     int quit;
 
@@ -18,6 +18,11 @@ int main(void) {
     game_state.plane.y = 220;
     game_state.plane.w = 200;
     game_state.plane.h = 50;
+
+    game_state.gate.x = 50;
+    game_state.gate.y = 50;
+    game_state.gate.w = 100;
+    game_state.gate.h = 50;
 
     wind = SDL_CreateWindow("Kuku", SDL_WINDOWPOS_UNDEFINED,
                             SDL_WINDOWPOS_UNDEFINED, 800, 800, 0);
@@ -35,11 +40,11 @@ int main(void) {
     // SDL_RenderPresent(rend);
 
     while (!quit) {
-        quit = mx_process_events(wind, &game_state.plane);
+        quit = mx_process_events(wind, &game_state);
 
-        mx_scale_gate(&world);
+        mx_scale_gate(&game_state);
 
-        mx_do_render(rend, &game_state.plane, &world);
+        mx_do_render(rend, &game_state);
     }
 
     SDL_DestroyWindow(wind);
