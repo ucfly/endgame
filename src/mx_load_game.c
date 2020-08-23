@@ -25,13 +25,13 @@ void mx_load_game(t_state *game) {
 
     game->plane.x = 160;
     game->plane.y = 220;
-    game->plane.w = 126;
-    game->plane.h = 98;
+    game->plane.w = 210;
+    game->plane.h = 130;
     // game->plane.cnt = 0;
 
     game->gate.x = 50;
     game->gate.y = 50;
-    game->gate.w = 50;
+    game->gate.w = 100;
     game->gate.h = 50;
     // game->gate.cnt = 1;
 

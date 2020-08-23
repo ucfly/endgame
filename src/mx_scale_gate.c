@@ -3,8 +3,8 @@
 void mx_scale_gate(t_state *game) {
     int random_x = (rand() % (800 + 1 - 10) + 10);
     int random_y = (rand() % (800 + 1 - 10) + 10);
-    int init_w = 126;
-    int init_h = 98;
+    int init_w = 210;
+    int init_h = 130;
 
     if (game->gate.w < 480) {
         game->gate.w += 2;
@@ -32,7 +32,7 @@ void mx_scale_gate(t_state *game) {
     if (game->gate.w >= 480) {
         game->gate.x = random_x;
         game->gate.y = random_y;
-        game->gate.w = 120;
+        game->gate.w = 100;
         game->gate.h = 50;
 
         game->plane.w = init_w;
