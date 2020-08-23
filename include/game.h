@@ -31,6 +31,7 @@ typedef struct s_state {
     // imgs
     SDL_Texture *bg;
     SDL_Texture *car;
+    SDL_Texture *gate_img;
 
     SDL_Renderer *renderer;
     

@@ -2,9 +2,11 @@
 
 void mx_load_game(t_state *game) {
     SDL_Surface *bg_surf = NULL;
+    SDL_Surface *gate_surf = NULL;
     SDL_Surface *car_surf = NULL;
 
     bg_surf = IMG_Load("img/space_bg.jpg");
+    gate_surf = IMG_Load("img/circle.png");
     car_surf = IMG_Load("img/new_red_car.png");
 
     if (bg_surf == NULL || car_surf == NULL) {
@@ -18,6 +20,9 @@ void mx_load_game(t_state *game) {
     game->car = SDL_CreateTextureFromSurface(game->renderer, car_surf);
     SDL_FreeSurface(car_surf);
 
+    game->gate_img = SDL_CreateTextureFromSurface(game->renderer, gate_surf);
+    SDL_FreeSurface(gate_surf);
+
     game->plane.x = 160;
     game->plane.y = 220;
     game->plane.w = 126;
@@ -27,6 +32,7 @@ void mx_load_game(t_state *game) {
     game->gate.x = 50;
     game->gate.y = 50;
     game->gate.w = 50;
+    game->gate.h = 50;
     // game->gate.cnt = 1;
 
     game->space.x = 0;
