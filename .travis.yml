@@ -7,4 +7,6 @@ os: osx
 
 compiler: clang
 
+before_script: brew install sdl2 sdl2_gfx sdl2_image
+
 script: make
