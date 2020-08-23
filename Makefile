@@ -15,7 +15,8 @@ RM = rm -rdf
 
 CC = clang
 C_FLAGS = `sdl2-config --libs --cflags` -std=c11 -Wall -Wextra -Werror -Wpedantic 
-LIBS = -Llib -lSDL2-2.0.0 -lSDL2_image-2.0.0
+# LIBS = -Llib -lSDL2-2.0.0 -lSDL2_image-2.0.0
+LIBS = -lSDL2-2.0.0 -lSDL2_image-2.0.0
 
 # ========== body =========
 all: NAME
