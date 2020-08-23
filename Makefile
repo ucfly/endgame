@@ -14,7 +14,7 @@ SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
 RM = rm -rdf
 
 CC = clang
-C_FLAGS = `sdl2-config --libs --cflags` -std=c11 -Wall -Wextra -Werror -Wpedantic -Llib -lSDL2-2.0.0 
+C_FLAGS = `sdl2-config --libs --cflags` -std=c11 -Wall -Wextra -Werror -Wpedantic -Llib -lSDL2-2.0.0 -lSDL2_image-2.0.0
 
 # ========== body =========
 all: NAME

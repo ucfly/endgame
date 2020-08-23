@@ -18,22 +18,6 @@ int mx_process_events(SDL_Window *window, t_car *plane, t_car *astr) {
                     case SDLK_ESCAPE:
                         quit = 1;
                         break;
-                    case SDLK_RIGHT:
-                        plane->x += 10;
-                        astr->x += 10;
-                        break;
-                    case SDLK_LEFT:
-                        plane->x -= 10;
-                        astr->x -= 10;
-                        break;
-                    case SDLK_UP:
-                        plane->y -= 10;
-                        astr->y -= 10;
-                        break;
-                    case SDLK_DOWN:
-                        plane->y += 10;
-                        astr->y += 10;
-                        break;
                     default:
                         break;
                 }
@@ -45,5 +29,24 @@ int mx_process_events(SDL_Window *window, t_car *plane, t_car *astr) {
                 break;
         }
     }
+
+    const Uint8 *state = SDL_GetKeyboardState(NULL);
+    if (state[SDL_SCANCODE_LEFT]) {
+        plane->x -= 10;
+        astr->x -= 10;
+    }
+    if (state[SDL_SCANCODE_RIGHT]) {
+        plane->x += 10;
+        astr->x += 10;
+    }
+    if(state[SDL_SCANCODE_UP]){
+        plane->y -= 10;
+        astr->y -= 10;
+    }
+    if(state[SDL_SCANCODE_DOWN]){
+        plane->y += 10;
+        astr->y += 10;
+    }
+
     return quit;
 }
