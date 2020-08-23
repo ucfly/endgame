@@ -19,11 +19,18 @@ typedef struct world {
     int y;
     int w;
     int h;
+    int cnt;
 }              t_world;
 
 typedef struct s_state {
+    // objects
     t_world plane;
     t_world gate;
+
+    // imgs
+    SDL_Texture *bg;
+    SDL_Texture *car;
+
 }              t_state;
 
 // funcs
