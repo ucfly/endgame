@@ -32,16 +32,16 @@ int mx_process_events(SDL_Window *window, t_state *game) {
 
     const Uint8 *state = SDL_GetKeyboardState(NULL);
     if (state[SDL_SCANCODE_LEFT]) {
-        game->plane.x -= 10;
+        game->plane.x -= 7;
     }
     if (state[SDL_SCANCODE_RIGHT]) {
-        game->plane.x += 10;
+        game->plane.x += 7;
     }
     if(state[SDL_SCANCODE_UP]){
-        game->plane.y -= 10;
+        game->plane.y -= 7;
     }
     if(state[SDL_SCANCODE_DOWN]){
-        game->plane.y += 10;
+        game->plane.y += 7;
     }
 
     return quit;

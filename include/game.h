@@ -14,7 +14,7 @@
 
 // structs
 
-typedef struct world {
+typedef struct s_world {
     int x;
     int y;
     int w;
@@ -26,10 +26,14 @@ typedef struct s_state {
     // objects
     t_world plane;
     t_world gate;
+    t_world space;
 
     // imgs
     SDL_Texture *bg;
     SDL_Texture *car;
+
+    SDL_Renderer *renderer;
+    
 
 }              t_state;
 
@@ -43,3 +47,4 @@ void mx_err_check(void *target);
 void mx_printerr(const char *s);
 void mx_do_render(SDL_Renderer *rend, t_state *game);
 void mx_scale_gate(t_state *game);
+void mx_load_game(t_state *game);
