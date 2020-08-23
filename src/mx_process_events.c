@@ -1,6 +1,6 @@
 #include "game.h"
 
-int mx_process_events(SDL_Window *window, t_car *plane, t_car *astr) {
+int mx_process_events(SDL_Window *window, t_world *plane) {
     SDL_Event e;
     int quit = 0;
 
@@ -33,19 +33,15 @@ int mx_process_events(SDL_Window *window, t_car *plane, t_car *astr) {
     const Uint8 *state = SDL_GetKeyboardState(NULL);
     if (state[SDL_SCANCODE_LEFT]) {
         plane->x -= 10;
-        astr->x -= 10;
     }
     if (state[SDL_SCANCODE_RIGHT]) {
         plane->x += 10;
-        astr->x += 10;
     }
     if(state[SDL_SCANCODE_UP]){
         plane->y -= 10;
-        astr->y -= 10;
     }
     if(state[SDL_SCANCODE_DOWN]){
         plane->y += 10;
-        astr->y += 10;
     }
 
     return quit;
