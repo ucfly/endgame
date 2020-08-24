@@ -6,9 +6,9 @@ void mx_load_game(t_state *game) {
     // SDL_Surface *car_surf = NULL;
 
     SDL_Surface *surf = NULL;
-    
+
     // space bg:
-    surf = IMG_Load("img/space_bg.jpg");
+    surf = IMG_Load("resource/img/space_bg.jpg");
     if (surf == NULL) {
         mx_printerr("can't find space bg");
         SDL_Quit();
@@ -18,7 +18,7 @@ void mx_load_game(t_state *game) {
     game->bg = SDL_CreateTextureFromSurface(game->renderer, surf);
 
     // orange circle
-    surf = IMG_Load("img/circle.png");
+    surf = IMG_Load("resource/img/circle.png");
     if (surf == NULL) {
         mx_printerr("Can't load orange gate");
         SDL_Quit();
@@ -28,7 +28,7 @@ void mx_load_game(t_state *game) {
     game->gate_img[0] = SDL_CreateTextureFromSurface(game->renderer, surf);
 
     // green circle
-    surf = IMG_Load("img/circle_green .png");
+    surf = IMG_Load("resource/img/circle_green .png");
     if (surf == NULL) {
         mx_printerr("  Can't load green gate");
         SDL_Quit();
@@ -39,7 +39,7 @@ void mx_load_game(t_state *game) {
 
     // car
 
-    surf = IMG_Load("img/new_red_car.png");
+    surf = IMG_Load("resource/img/space_car.png");
     if (surf == NULL) {
         mx_printerr("Can't load car");
         SDL_Quit();

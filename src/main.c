@@ -18,7 +18,6 @@ int main(void) {
         wind, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     game.renderer = rend;
 
-    // bg_surf = IMG_Load("img/starfield_1922x1037.jpg");
 
     mx_load_game(&game);
 
@@ -27,7 +26,7 @@ int main(void) {
         quit = mx_process_events(wind, &game);
 
         mx_scale_gate(&game);
-        mx_collision_detect(rend, &game);
+        // mx_collision_detect(rend, &game);
 
         process(&game);
 
