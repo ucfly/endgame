@@ -1,8 +1,8 @@
 #include "game.h"
 
 void mx_scale_gate(t_state *game) {
-    int random_x = (rand() % (800 + 1 - 10) + 10);
-    int random_y = (rand() % (800 + 1 - 10) + 10);
+    int random_x = (rand() % (750));
+    int random_y = (rand() % (750));
     int init_w = 210;
     int init_h = 130;
 
@@ -25,8 +25,8 @@ void mx_scale_gate(t_state *game) {
 
     // car(plane) scale
     if (game->gate.w > 420 && game->gate.w < 480) {
-        game->plane.w -= 5;
-        game->plane.h -= 5;
+        game->plane.w -= 3;
+        game->plane.h -= 3;
     }
 
     if (game->gate.w >= 480) {

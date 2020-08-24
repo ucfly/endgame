@@ -27,6 +27,7 @@ int main(void) {
         quit = mx_process_events(wind, &game);
 
         mx_scale_gate(&game);
+        mx_collision_detect(rend, &game);
 
         mx_do_render(game.renderer, &game);
     }

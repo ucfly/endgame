@@ -31,7 +31,7 @@ typedef struct s_state {
     // imgs
     SDL_Texture *bg;
     SDL_Texture *car;
-    SDL_Texture *gate_img;
+    SDL_Texture *gate_img[2];
 
     SDL_Renderer *renderer;
     
@@ -49,3 +49,5 @@ void mx_printerr(const char *s);
 void mx_do_render(SDL_Renderer *rend, t_state *game);
 void mx_scale_gate(t_state *game);
 void mx_load_game(t_state *game);
+
+void mx_do_render(game.renderer, &game);

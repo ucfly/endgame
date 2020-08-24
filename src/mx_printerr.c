@@ -1,7 +1,7 @@
 #include "game.h"
 
 void mx_printerr(const char *s) {
-    int s_len = mx_strlen(s) + 1;
+    int s_len = mx_strlen(s) + 2;
     char err_msg[s_len];
 
     mx_strcpy(err_msg, s);
