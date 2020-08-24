@@ -6,9 +6,12 @@
 #define MX_WIND_H 1000
 #define MX_PLANE_W 300
 #define MX_PLANE_H 100
-#define MX_RING_L 10
+#define MX_RING_L 0
 #define MX_RANDOM_X ((rand() % (MX_WIND_W + 1 - 0)) +0)
 #define MX_RANDOM_Y ((rand() % (MX_WIND_H + 1 - 0)) +0)
+#define MX_PLANE_ST_X (MX_WIND_W / 2 - MX_PLANE_W / 2)
+#define MX_PLANE_ST_Y (MX_WIND_H / 2 - MX_PLANE_H / 2)
+// #define MX_PLANE_ST_Y
 
 // includes
 #include <SDL2_image/SDL_image.h>
@@ -51,6 +54,7 @@ typedef struct s_state {
     SDL_Texture *gate_img[2];
 
     SDL_Renderer *renderer;
+    Mix_Music *bg_music;
     
 
 }              t_state;

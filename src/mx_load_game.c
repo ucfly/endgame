@@ -3,6 +3,16 @@
 void mx_load_game(t_state *game) {
     SDL_Surface *surf = NULL;
 
+
+    //load BG musix
+
+    Mix_Music *namemusic = Mix_LoadMUS("resource/audio/space_oddity.mp3");
+    if(!namemusic) {    
+        printf("Mix_LoadMUS(\"namemusic.mp3\"): %s\n", Mix_GetError());
+    // this might be a critical error...
+    }
+    game->bg_music = namemusic;
+
     // space bg:
     surf = IMG_Load("resource/img/space_bg.jpg");
     if (surf == NULL) {
@@ -46,7 +56,7 @@ void mx_load_game(t_state *game) {
 
     SDL_FreeSurface(surf);
 
-    game->plane.x = 160;
+    game->plane.x = MX_PLANE_ST_X;
     game->plane.y = 220;
     game->plane.w = MX_PLANE_W;
     game->plane.h = MX_PLANE_H;
@@ -55,7 +65,7 @@ void mx_load_game(t_state *game) {
 
     game->gate.x = MX_RANDOM_X;
     game->gate.y = MX_RANDOM_Y;
-    game->gate.w = 100;
+    game->gate.w = 50;
     game->gate.h = 50;
     // game->gate.cnt = 1;
 
