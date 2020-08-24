@@ -1,4 +1,5 @@
 #include "game.h"
+#define GRAVITY 0.01f
 
 int mx_process_events(SDL_Window *window, t_state *game) {
     SDL_Event e;
@@ -18,6 +19,10 @@ int mx_process_events(SDL_Window *window, t_state *game) {
                     case SDLK_ESCAPE:
                         quit = 1;
                         break;
+                    case SDLK_UP:
+                    game-> plane.dy = -5;
+                    break;
+
                     default:
                         break;
                 }

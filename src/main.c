@@ -5,12 +5,12 @@ int main(void) {
     SDL_Window *wind = NULL;
     SDL_Renderer *rend = NULL;
     int quit;
-
+    
     if (SDL_Init(SDL_INIT_VIDEO)) {
         mx_printerr("ne paluchilos");
         exit(1);
     }
-
+ 
     wind = SDL_CreateWindow("Kuku", SDL_WINDOWPOS_UNDEFINED,
                             SDL_WINDOWPOS_UNDEFINED, 800, 800, 0);
 
@@ -27,6 +27,8 @@ int main(void) {
         quit = mx_process_events(wind, &game);
 
         mx_scale_gate(&game);
+
+        process(&game);
 
         mx_do_render(game.renderer, &game);
     }

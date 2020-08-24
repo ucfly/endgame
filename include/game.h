@@ -15,11 +15,12 @@
 // structs
 
 typedef struct s_world {
-    int x;
-    int y;
-    int w;
-    int h;
-    int cnt;
+    float x;
+    float y;
+    float w;
+    float h;
+    float cnt;
+    float dy;
 }              t_world;
 
 typedef struct s_state {
@@ -49,3 +50,4 @@ void mx_printerr(const char *s);
 void mx_do_render(SDL_Renderer *rend, t_state *game);
 void mx_scale_gate(t_state *game);
 void mx_load_game(t_state *game);
+void process(t_state *game);
