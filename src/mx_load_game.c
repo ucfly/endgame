@@ -1,10 +1,6 @@
 #include "game.h"
 
 void mx_load_game(t_state *game) {
-    // SDL_Surface *bg_surf = NULL;
-    // SDL_Surface *gate_surf = NULL;
-    // SDL_Surface *car_surf = NULL;
-
     SDL_Surface *surf = NULL;
 
     // space bg:
@@ -46,26 +42,25 @@ void mx_load_game(t_state *game) {
         exit(1);
     }
 
-    game->car = SDL_CreateTextureFromSurface(game->renderer,surf);
+    game->car = SDL_CreateTextureFromSurface(game->renderer, surf);
 
     SDL_FreeSurface(surf);
 
     game->plane.x = 160;
     game->plane.y = 220;
-    game->plane.w = 300;
-    game->plane.h = 100;
-    game->plane.dy = 0;  
+    game->plane.w = MX_PLANE_W;
+    game->plane.h = MX_PLANE_H;
+    game->plane.dy = 0;
     // game->plane.cnt = 0;
 
-// TODO randomazi first x, y for ring
-    // game->gate.x = 50;
-    // game->gate.y = 50;
+    game->gate.x = MX_RANDOM_X;
+    game->gate.y = MX_RANDOM_Y;
     game->gate.w = 100;
     game->gate.h = 50;
     // game->gate.cnt = 1;
 
     game->space.x = 0;
     game->space.y = 0;
-    game->space.w = 1600;
-    game->space.h = 1000;
+    game->space.w = MX_WIND_W;
+    game->space.h = MX_WIND_H;
 }

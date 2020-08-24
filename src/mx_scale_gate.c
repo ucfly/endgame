@@ -1,8 +1,6 @@
 #include "game.h"
 
 void mx_scale_gate(t_state *game) {
-    int random_x = (rand() % (1500));
-    int random_y = (rand() % (900));
 
     if (game->gate.w < 480) {
         game->gate.w += 2;
@@ -23,13 +21,19 @@ void mx_scale_gate(t_state *game) {
         }
     }
 
-    if (game->gate.w > 440 && game->gate.w < 480) {
-        mx_scale_car(game, -1);
+    if (game->gate.w > 420 && game->gate.w < 480) {
+        game->plane.dy = mx_check_pass(game);
+
+        mx_scale_car(game, game->plane.dy);
+
+        // if(is_crush > 0) {
+        //     mx_printerr("     UMIR \n");
+        // }
     }
 
     if (game->gate.w >= 480) {
-        game->gate.x = random_x;
-        game->gate.y = random_y;
+        game->gate.x = MX_RANDOM_X;
+        game->gate.y = MX_RANDOM_Y;
         game->gate.w = 100;
         game->gate.h = 50;
 
