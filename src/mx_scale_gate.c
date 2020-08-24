@@ -1,10 +1,12 @@
 #include "game.h"
 
 void mx_scale_gate(t_state *game) {
+
     int random_x = (rand() % (750));
     int random_y = (rand() % (750));
-    int init_w = 210;
-    int init_h = 130;
+    int init_w = 300;
+    int init_h = 100;
+
 
     if (game->gate.w < 480) {
         game->gate.w += 2;
