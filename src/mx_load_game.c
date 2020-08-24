@@ -7,7 +7,8 @@ void mx_load_game(t_state *game) {
 
     bg_surf = IMG_Load("img/space_bg.jpg");
     gate_surf = IMG_Load("img/circle.png");
-    car_surf = IMG_Load("img/new_red_car.png");
+    // car_surf = IMG_Load("img/new_red_car.png");
+    car_surf = IMG_Load("img/space_car.png");
 
     if (bg_surf == NULL || car_surf == NULL) {
         mx_printerr(SDL_GetError());
@@ -25,8 +26,8 @@ void mx_load_game(t_state *game) {
 
     game->plane.x = 160;
     game->plane.y = 220;
-    game->plane.w = 210;
-    game->plane.h = 130;
+    game->plane.w = 300;
+    game->plane.h = 100;
     game->plane.dy = 0;  
     // game->plane.cnt = 0;
 
@@ -38,6 +39,6 @@ void mx_load_game(t_state *game) {
 
     game->space.x = 0;
     game->space.y = 0;
-    game->space.w = 800;
-    game->space.h = 800;
+    game->space.w = 1600;
+    game->space.h = 1000;
 }

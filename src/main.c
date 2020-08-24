@@ -12,7 +12,7 @@ int main(void) {
     }
  
     wind = SDL_CreateWindow("Kuku", SDL_WINDOWPOS_UNDEFINED,
-                            SDL_WINDOWPOS_UNDEFINED, 800, 800, 0);
+                            SDL_WINDOWPOS_UNDEFINED, 1600, 1000, 0);
 
     rend = SDL_CreateRenderer(
         wind, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
