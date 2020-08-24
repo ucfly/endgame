@@ -14,13 +14,15 @@ SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
 RM = rm -rdf
 
 CC = clang
-C_FLAGS = `sdl2-config --libs --cflags` -std=c11 -Wall -Wextra -Werror -Wpedantic -Llib -lSDL2-2.0.0 
+C_FLAGS = `sdl2-config --libs --cflags` -std=c11 -Wall -Wextra -Werror -Wpedantic 
+# LIBS = -Llib -lSDL2-2.0.0 -lSDL2_image-2.0.0
+LIBS = -lSDL2-2.0.0 -lSDL2_image-2.0.0
 
 # ========== body =========
 all: NAME
 
 NAME: $(SRC_FILES)
-	@$(CC) $(C_FLAGS) $(SRC_FILES) -I $(INC_DIR)   -o$(NAME)
+	@$(CC) $(C_FLAGS) $(LIBS) $(SRC_FILES) -I $(INC_DIR) -o$(NAME)
 	
 uninstall:
 	@$(RM) $(NAME)
