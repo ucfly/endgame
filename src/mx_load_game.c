@@ -56,8 +56,8 @@ void mx_load_game(t_state *game) {
 
     game->gate.x = MX_RANDOM_X;
     game->gate.y = MX_RANDOM_Y;
-    game->gate.w = 50;
-    game->gate.h = 50;
+    game->gate.w = MX_RING_W;
+    game->gate.h = MX_RING_H ;
 
     game->space.x = 0;
     game->space.y = 0;

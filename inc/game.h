@@ -6,7 +6,9 @@
 
 #define MX_GRAVITY 0.02f
 
-#define MX_RING_L 10
+#define MX_RING_L 5
+#define MX_RING_W 120
+#define MX_RING_H 40
 
 #define MX_RANDOM_X ((rand() % (MX_WIND_W + 1 - 0)) +0)
 #define MX_RANDOM_Y ((rand() % (MX_WIND_H + 1 - 0)) +0)
@@ -68,12 +70,10 @@ char *mx_strcpy(char *dst, const char *src);
 
 int mx_strlen(const char *s);
 int mx_process_events(SDL_Window *window, t_state *game);
-int mx_check_pass(t_state *game);
 
 void mx_err_check(void *target);
 void mx_printerr(const char *s);
 void mx_do_render(SDL_Renderer *rend, t_state *game);
-void mx_scale_gate(t_state *game);
-void mx_scale_car(t_state *game);
+void mx_play_game(t_state *game);
 void mx_load_game(t_state *game);
-void process(t_state *game);
+// void process(t_state *game);
