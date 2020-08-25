@@ -8,10 +8,10 @@ int mx_check_pass(t_state *game) {
 
     if (game->plane.x > game->gate.x && pl_max_x < gt_in_max_x) {
         if (game->plane.y > game->gate.y && pl_max_y < gt_in_max_y) {
-            return -1;
+            return 1;
         }
     }
-        return 1;
+        return -1;
 }
 
 

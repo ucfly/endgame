@@ -23,7 +23,7 @@ void mx_do_render(SDL_Renderer *rend, t_state *game) {
                       game->gate.y,
                       game->gate.w,
                       game->gate.h};
-    SDL_RenderCopy(rend, game->gate_img[0], NULL, &tor_p);
+    SDL_RenderCopy(rend, game->gate_img, NULL, &tor_p);
 
     SDL_SetRenderDrawColor(rend, 250, 50, 20, 0);
     SDL_Rect plane_p = {game->plane.x,

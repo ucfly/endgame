@@ -1,17 +1,20 @@
 #pragma once
 
-// defines
-#define MX_GRAVITY 0.02f
+// === defines ===
 #define MX_WIND_W 1600
 #define MX_WIND_H 1000
-#define MX_PLANE_W 300
-#define MX_PLANE_H 100
+
+#define MX_GRAVITY 0.02f
+
 #define MX_RING_L 0
+
 #define MX_RANDOM_X ((rand() % (MX_WIND_W + 1 - 0)) +0)
 #define MX_RANDOM_Y ((rand() % (MX_WIND_H + 1 - 0)) +0)
+
+#define MX_PLANE_W 300
+#define MX_PLANE_H 100
 #define MX_PLANE_ST_X (MX_WIND_W / 2 - MX_PLANE_W / 2)
 #define MX_PLANE_ST_Y (MX_WIND_H / 2 - MX_PLANE_H / 2)
-// #define MX_PLANE_ST_Y
 
 // includes
 #include <SDL2_image/SDL_image.h>
@@ -36,8 +39,9 @@ typedef struct s_world {
     float y;
     float w;
     float h;
-    float cnt;
+    int cnt;
     float dy;
+    int dw;
 }              t_world;
 
 
@@ -51,7 +55,7 @@ typedef struct s_state {
     // imgs
     SDL_Texture *bg;
     SDL_Texture *car;
-    SDL_Texture *gate_img[2];
+    SDL_Texture *gate_img;
 
     SDL_Renderer *renderer;
     Mix_Music *bg_music;
@@ -70,6 +74,6 @@ void mx_err_check(void *target);
 void mx_printerr(const char *s);
 void mx_do_render(SDL_Renderer *rend, t_state *game);
 void mx_scale_gate(t_state *game);
-void mx_scale_car(t_state *game, int direction);
+void mx_scale_car(t_state *game);
 void mx_load_game(t_state *game);
 void process(t_state *game);

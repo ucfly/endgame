@@ -3,7 +3,7 @@
 int main(void) {
     t_state game;
     SDL_Window *wind = NULL;
-    SDL_Renderer *rend = NULL;
+    // SDL_Renderer *rend = NULL;
     int quit;
 
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -12,17 +12,11 @@ int main(void) {
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
     TTF_Init();
 
-    if (SDL_Init(SDL_INIT_VIDEO)) {
-        mx_printerr("ne paluchilos");
-        exit(1);
-    }
-
     wind = SDL_CreateWindow("Kuku", SDL_WINDOWPOS_UNDEFINED,
                             SDL_WINDOWPOS_UNDEFINED, MX_WIND_W, MX_WIND_H, 0);
 
-    rend = SDL_CreateRenderer(
+    game.renderer = SDL_CreateRenderer(
         wind, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    game.renderer = rend;
 
     mx_load_game(&game);
 
@@ -42,11 +36,15 @@ int main(void) {
         mx_do_render(game.renderer, &game);
     }
 
+
     SDL_DestroyTexture(game.bg);
     SDL_DestroyTexture(game.car);
+    SDL_DestroyTexture(game.gate_img);
     SDL_DestroyWindow(wind);
     SDL_DestroyRenderer(game.renderer);
+    // SDL_FreeChunk(game.bg_music);
     SDL_Quit();
 
+    system("leaks -q game");
     return 0;
 }

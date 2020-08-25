@@ -1,8 +1,6 @@
 #include "game.h"
 
-void mx_scale_gate(t_state *game) {
-
-    if (game->gate.w < MX_PLANE_W + 80) {
+static void mx_f1(t_state *game) {
         game->gate.w++;
         game->gate.h++;
 
@@ -19,16 +17,32 @@ void mx_scale_gate(t_state *game) {
         else {
             game->gate.y++;
         }
+   
+}
+
+void mx_scale_gate(t_state *game) {
+    if (game->gate.w < MX_PLANE_W + 80) {
+        mx_f1(game);
     }
 
-    if (game->gate.w > MX_PLANE_W+40 && game->gate.w < MX_PLANE_W + 80) {
-        game->plane.dy = mx_check_pass(game);
+    if (game->gate.w == MX_PLANE_W + 40) {
+        int is_passed = mx_check_pass(game);
 
-        mx_scale_car(game, game->plane.dy);
+        game->plane.dw = is_passed;
 
-        // if(is_crush > 0) {
-        //     mx_printerr("     UMIR \n");
-        // }
+        if (is_passed == 1) {
+            printf("score: %d\n----\n",game->plane.cnt );
+            game->plane.cnt++;
+            write(1, "pass\n", 5);
+            printf("score: %d\n----\n", game->plane.cnt );
+        }
+        else if (is_passed == -1) {
+            write(1, "\numir\n", 6);
+        }
+    }
+
+    if (game->gate.w > MX_PLANE_W + 40 && game->gate.w < MX_PLANE_W + 80) {
+        mx_scale_car(game);
     }
 
     if (game->gate.w >= MX_PLANE_W + 80) {
@@ -38,10 +52,9 @@ void mx_scale_gate(t_state *game) {
         game->gate.h = 50;
 
         game->plane.x = MX_PLANE_ST_X;
-        // game->plane.x = MX_PLANE_ST_X;
-        
-
-        mx_scale_car(game, 0);
-
+        game->plane.dw = 0;
+        mx_scale_car(game);
     }
 }
+
+
