@@ -6,7 +6,7 @@
 
 #define MX_GRAVITY 0.02f
 
-#define MX_RING_L 0
+#define MX_RING_L 10
 
 #define MX_RANDOM_X ((rand() % (MX_WIND_W + 1 - 0)) +0)
 #define MX_RANDOM_Y ((rand() % (MX_WIND_H + 1 - 0)) +0)
