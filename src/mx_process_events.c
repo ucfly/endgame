@@ -1,5 +1,5 @@
 #include "game.h"
-#define GRAVITY 0.01f
+
 
 int mx_process_events(SDL_Window *window, t_state *game) {
     SDL_Event e;
@@ -20,7 +20,7 @@ int mx_process_events(SDL_Window *window, t_state *game) {
                         quit = 1;
                         break;
                     case SDLK_UP:
-                    game-> plane.dy = -5;
+                    game-> plane.dy = -2;
                     break;
 
                     default:
@@ -37,16 +37,16 @@ int mx_process_events(SDL_Window *window, t_state *game) {
 
     const Uint8 *state = SDL_GetKeyboardState(NULL);
     if (state[SDL_SCANCODE_LEFT]) {
-        game->plane.x -= 7;
+        game->plane.x -= 5;
     }
     if (state[SDL_SCANCODE_RIGHT]) {
-        game->plane.x += 7;
+        game->plane.x += 5;
     }
     if(state[SDL_SCANCODE_UP]){
-        game->plane.y -= 7;
+        game->plane.y -= 5;
     }
     if(state[SDL_SCANCODE_DOWN]){
-        game->plane.y += 7;
+        game->plane.y += 5;
     }
 
     return quit;
