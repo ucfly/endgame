@@ -16,6 +16,7 @@ int mx_process_events(SDL_Window *window, t_state *game) {
             case SDL_KEYDOWN:
                 switch (e.key.keysym.sym) {
                     case SDLK_ESCAPE:
+                        // game->exit = 4;
                         quit = 1;
                         break;
                     case SDLK_UP:

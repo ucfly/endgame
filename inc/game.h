@@ -18,6 +18,11 @@
 #define MX_PLANE_ST_X (MX_WIND_W / 2 - MX_PLANE_W / 2)
 #define MX_PLANE_ST_Y (MX_WIND_H / 2 - MX_PLANE_H / 2)
 
+#define MX_BTN_W 300
+#define MX_BTN_H 150
+#define MX_BTN_X ((MX_WIND_W - MX_BTN_W) / 2)
+#define MX_BTN_Y (MX_WIND_H / 2 - MX_BTN_H)
+
 // includes
 #include <SDL2_image/SDL_image.h>
 #include <SDL2/SDL.h>

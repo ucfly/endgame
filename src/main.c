@@ -23,27 +23,51 @@ int main(void) {
     game.exit = 0;
     game.play = 0;
     srand(time(0));
-
+    // int foo = 0;
     Mix_PlayMusic(game.bg_music, -1);
 
-    while (!game.exit) {
-        game.exit = show_menu(game.renderer);
-        while (!game.play)
-        {
-            game.exit = 0;
-            game.play = mx_process_events(wind, &game);
-            mx_play_game(&game);
-            mx_do_render(game.renderer, &game);
-        }
-        // mx_process_events(wind, &game);
+    while (game.exit != 4) {
+        // game.play = 0;
         
-        // quit = mx_process_events(wind, &game);
+        game.exit = show_menu(game.renderer);
 
+        switch (game.exit) {
+            case 1:
+                while (!game.play) {
+                    game.exit = 0;
+                    game.play = mx_process_events(wind, &game);
+
+                    mx_play_game(&game);
+                    mx_do_render(game.renderer, &game);
+                }
+                break;
+            case 2:
+                printf("LEADERBOARD!!!");
+     
+                break;
+            case 3:
+                game.exit = 4;
+                printf("EXIT!!!");
+                // while (!game.play) {
+                //     game.exit = 0;
+                //     game.play = mx_process_events(wind, &game);
+                //     mx_play_game(&game);
+                //     mx_do_render(game.renderer, &game);
+                // }
+                break;
+            default:
+
+                break;
+        }
+        printf("\n kuku: %d", game.exit);
+
+        // mx_process_events(wind, &game);
+
+        // quit = mx_process_events(wind, &game);
 
         // mx_play_game(&game);
         // mx_do_render(game.renderer, &game);
     }
-
 
     SDL_DestroyTexture(game.bg);
     SDL_DestroyTexture(game.car);
