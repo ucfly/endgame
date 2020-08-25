@@ -1,8 +1,8 @@
 #include "game.h"
 
 static void scale_gate(t_state *game) {
-    game->gate.w++;
-    game->gate.h++;
+    game->gate.w = game->gate.w + 1 + (0.2*game->plane.cnt) ;
+    game->gate.h = game->gate.h + 1 + (0.2*game->plane.cnt);
 
     if (game->gate.x > (game->gate.w - 200)) {
         game->gate.x -= 1;
@@ -74,7 +74,7 @@ static void is_over(t_state *game) {
         game->plane.cnt++;
         break;
     case -1:
-        write(1, "\numir\n", 6);
+        write(1, "\nУХОДИ\n", 6);
         break;
     default:
         break;
@@ -84,20 +84,20 @@ static void is_over(t_state *game) {
 void mx_play_game(t_state *game) {
     gravitation (game);
 
-    if (game->gate.w < MX_PLANE_W + 80) {
+    if (game->gate.w < MX_PLANE_W + 160) {
         scale_gate(game);
     }
 
-    if (game->gate.w == MX_PLANE_W + 40) {
+    if (game->gate.w == MX_PLANE_W + 80) {
         game->plane.dw = check_pass(game);
         is_over(game);
     }
 
-    if (game->gate.w > MX_PLANE_W + 40 && game->gate.w < MX_PLANE_W + 80) {
+    if (game->gate.w > MX_PLANE_W + 80 && game->gate.w < MX_PLANE_W + 160) {
         scale_car(game);
     }
 
-    if (game->gate.w >= MX_PLANE_W + 80) {
+    if (game->gate.w >= MX_PLANE_W + 160) {
         initial_state(game);
         scale_car(game);
     }
