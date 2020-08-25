@@ -4,7 +4,7 @@ int main(void) {
     t_state game;
     SDL_Window *wind = NULL;
     // SDL_Renderer *rend = NULL;
-    int quit;
+    // int quit;
 
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
@@ -20,16 +20,28 @@ int main(void) {
 
     mx_load_game(&game);
 
-    quit = 0;
+    game.exit = 0;
+    game.play = 0;
     srand(time(0));
 
     Mix_PlayMusic(game.bg_music, -1);
 
-    while (!quit) {
-        quit = mx_process_events(wind, &game);
+    while (!game.exit) {
+        game.exit = show_menu(game.renderer);
+        while (!game.play)
+        {
+            game.exit = 0;
+            game.play = mx_process_events(wind, &game);
+            mx_play_game(&game);
+            mx_do_render(game.renderer, &game);
+        }
+        // mx_process_events(wind, &game);
+        
+        // quit = mx_process_events(wind, &game);
 
-        mx_play_game(&game);
-        mx_do_render(game.renderer, &game);
+
+        // mx_play_game(&game);
+        // mx_do_render(game.renderer, &game);
     }
 
 

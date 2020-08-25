@@ -59,6 +59,8 @@ typedef struct s_state {
 
     SDL_Renderer *renderer;
     Mix_Music *bg_music;
+    int play;
+    int exit;
     
 
 }              t_state;
@@ -73,3 +75,10 @@ void mx_printerr(const char *s);
 void mx_do_render(SDL_Renderer *rend, t_state *game);
 void mx_play_game(t_state *game);
 void mx_load_game(t_state *game);
+
+
+int show_menu(SDL_Renderer *renderer);
+
+void draw_text( SDL_Color color, int x, int y, char *text, 
+                SDL_Renderer *renderer, TTF_Font *font);
+
