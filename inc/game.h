@@ -35,7 +35,6 @@
 #include <time.h>
 
 // structs
-// TODO razobratsia s tipami na rayone
 typedef struct s_world {
     float x;
     float y;
@@ -45,7 +44,6 @@ typedef struct s_world {
     float dy;
     int dw;
 }              t_world;
-
 
 
 typedef struct s_state {
@@ -71,9 +69,7 @@ char *mx_strcpy(char *dst, const char *src);
 int mx_strlen(const char *s);
 int mx_process_events(SDL_Window *window, t_state *game);
 
-void mx_err_check(void *target);
 void mx_printerr(const char *s);
 void mx_do_render(SDL_Renderer *rend, t_state *game);
 void mx_play_game(t_state *game);
 void mx_load_game(t_state *game);
-// void process(t_state *game);

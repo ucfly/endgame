@@ -39,6 +39,10 @@ int main(void) {
     SDL_DestroyWindow(wind);
     SDL_DestroyRenderer(game.renderer);
     // SDL_FreeChunk(game.bg_music);
+
+    IMG_Quit();
+    TTF_Quit();
+    Mix_CloseAudio();
     SDL_Quit();
 
     system("leaks -q game");
