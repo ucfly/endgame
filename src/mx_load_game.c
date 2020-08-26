@@ -34,7 +34,7 @@ void mx_load_game(t_state *game) {
     game->gate_img[0] = SDL_CreateTextureFromSurface(game->renderer, surf);
 
     // green circle
-    surf = IMG_Load("resource/img/circle_green .png");
+    surf = IMG_Load("resource/img/circle.png");
     if (surf == NULL) {
         mx_printerr("  Can't load green gate");
         SDL_Quit();
