@@ -30,6 +30,17 @@
 #define MX_R_BOARD 3
 #define MX_R_EXIT -1
 
+#define CIRCLE  "resource/img/circles/circle_orange.png"
+#define CIRCLE2  "resource/img/circles/circle_green.png"
+
+#define PLANE  "resource/img/space_car.png"
+#define PLANE2  "resource/img/space_car2.png"
+
+#define BACKGROUND_IMG "resource/img/space_bg.jpg"
+
+#define FONT_MAIN "resource/font/Sansation-Bold.ttf"
+#define MUSIC_MENU "resource/audio/space_oddity.mp3"
+
 // colors
 #define TEAL {10, 128, 128, 0}
 #define ORANGE {255, 100, 0, 0}
