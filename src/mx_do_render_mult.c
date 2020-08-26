@@ -58,7 +58,7 @@ void mx_do_render_mult(SDL_Renderer *rend, t_state *game) {
     SDL_RenderCopy(rend, game->life_img, NULL, &heart_2_p);
     }
     
-    SDL_Color score_color_or = ORANGE;
+    SDL_Color score_color_or = GREEN;
 
     char *score_1 =  mx_int_to_str(game->plane.cnt);
     mx_draw_text(score_color_or,
@@ -77,7 +77,7 @@ void mx_do_render_mult(SDL_Renderer *rend, t_state *game) {
     score_1 = NULL;
 
 
-    SDL_Color score_color_te = GREEN;
+    SDL_Color score_color_te = ORANGE;
 
     char *score_2 = mx_int_to_str(game->plane2.cnt);
     mx_draw_text(score_color_te,
