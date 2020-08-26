@@ -50,7 +50,6 @@
 #define WHITE {255, 255, 255, 0}
 #define TEAL {10, 128, 128, 0}
 #define ORANGE {255, 100, 0, 0}
-
 #define GREEN {144, 178, 71, 0}
 
 // includes

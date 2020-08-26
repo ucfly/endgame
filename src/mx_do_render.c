@@ -26,7 +26,7 @@ void mx_do_render(SDL_Renderer *rend, t_state *game) {
     // SDL_RenderFillRect(rend, &plane_p);
     SDL_RenderCopy(rend, game->car, NULL, &plane_p);
 
-    for (int i = 3; i > 0; i--) {
+    for (int i = GAME_LIFE; i > 0; i--) {
         int heart_x = HEART_SIZE + HEART_SIZE * i;
         game->life_img = (i <= game->plane.life) 
                             ? game->heart_img 

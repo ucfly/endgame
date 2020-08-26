@@ -10,6 +10,7 @@ int main(void) {
     IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+    SDL_ShowCursor(SDL_DISABLE);
     TTF_Init();
 
     wind = SDL_CreateWindow("πLot", SDL_WINDOWPOS_UNDEFINED,

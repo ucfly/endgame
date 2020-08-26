@@ -4,9 +4,9 @@ e_scenes mx_multiplayer(SDL_Window *window, t_state *game) {
     SDL_Event e;
     e_scenes status = MENU_STATE;
     int running = 1;
-    game->plane.life = 3;
+    game->plane.life = GAME_LIFE;
     game->plane.cnt = 0;
-    game->plane2.life = 3;
+    game->plane2.life = GAME_LIFE;
     game->plane2.cnt = 0;
 
     while (running) {
@@ -26,7 +26,10 @@ e_scenes mx_multiplayer(SDL_Window *window, t_state *game) {
                             break;
                         case SDLK_UP:
                             game->plane.dy = -2;
-                        break;
+                            break;
+                        case SDLK_w:
+                            game->plane2.dy = -2;
+                            break;
 
                         default:
                             break;
@@ -54,16 +57,16 @@ e_scenes mx_multiplayer(SDL_Window *window, t_state *game) {
             game->plane.y += 5;
         }
         if (state[SDL_SCANCODE_A]) {
-            game->plane2.x -= 5;
+            game->plane2.x -= 6;
         }
         if (state[SDL_SCANCODE_D]) {
-            game->plane2.x += 5;
+            game->plane2.x += 6;
         }
         if(state[SDL_SCANCODE_W]){
-            game->plane2.y -= 5;
+            game->plane2.y -= 6;
         }
         if(state[SDL_SCANCODE_S]){
-            game->plane2.y += 5;
+            game->plane2.y += 6;
         }
         mx_play_game_mult(game);
         mx_do_render_mult(game->renderer, game);

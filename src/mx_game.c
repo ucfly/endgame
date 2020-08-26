@@ -24,6 +24,10 @@ e_scenes mx_game(SDL_Window *window, t_state *game) {
                             break;
                         case SDLK_UP:
                         game->plane.dy = -2;
+                        break; 
+                        
+                        case SDLK_w:
+                        game->plane2.dy = -2;
                         break;
 
                         default:

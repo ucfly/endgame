@@ -15,7 +15,6 @@ void mx_do_render_mult(SDL_Renderer *rend, t_state *game) {
                       game->gate.y,
                       game->gate.w,
                       game->gate.h};
-     SDL_RenderFillRect(rend, &tor_p);
     SDL_RenderCopy(rend, game->gate_img, NULL, &tor_p);
 
     SDL_SetRenderDrawColor(rend, 25, 50, 200, 255);
@@ -23,15 +22,13 @@ void mx_do_render_mult(SDL_Renderer *rend, t_state *game) {
                       game->gate2.y,
                       game->gate2.w,
                       game->gate2.h};
-    SDL_RenderFillRect(rend, &tor_p2);
-    SDL_RenderCopy(rend, game->gate_img, NULL, &tor_p2);
+    SDL_RenderCopy(rend, game->gate2_img, NULL, &tor_p2);
 
     SDL_SetRenderDrawColor(rend, 250, 50, 20, 0);
     SDL_Rect plane_p = {game->plane.x,
                         game->plane.y,
                         game->plane.w,
                         game->plane.h};
-    SDL_RenderFillRect(rend, &plane_p);
     SDL_RenderCopy(rend, game->car, NULL, &plane_p);
 
     SDL_SetRenderDrawColor(rend, 250, 50, 20, 0);
@@ -39,10 +36,9 @@ void mx_do_render_mult(SDL_Renderer *rend, t_state *game) {
                         game->plane2.y,
                         game->plane2.w,
                         game->plane2.h};
-    SDL_RenderFillRect(rend, &plane_p2);
-    SDL_RenderCopy(rend, game->car, NULL, &plane_p2);
+    SDL_RenderCopy(rend, game->car2, NULL, &plane_p2);
 
-    for (int i = 3; i > 0; i--) {
+    for (int i = GAME_LIFE; i > 0; i--) {
     int heart_x = HEART_SIZE + HEART_SIZE * i;
     game->life_img = (i <= game->plane.life) 
                         ? game->heart_img 
@@ -52,8 +48,8 @@ void mx_do_render_mult(SDL_Renderer *rend, t_state *game) {
     SDL_RenderCopy(rend, game->life_img, NULL, &heart_1_p);
     }
 
-    for (int i = 3; i > 0; i--) {
-    int heart_x = MX_WIND_W - HEART_SIZE - HEART_SIZE * i;
+    for (int i = GAME_LIFE; i > 0; i--) {
+    int heart_x = MX_WIND_W - HEART_SIZE * 2 - HEART_SIZE * i;
     game->life_img = (i <= game->plane2.life) 
                         ? game->heart_img 
                         : game->heart_empty_img;

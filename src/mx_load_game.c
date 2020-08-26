@@ -3,7 +3,6 @@
 void mx_load_game(t_state *game) {
     SDL_Surface *surf = NULL;
 
-
     //load BG musix
 
     Mix_Music *namemusic = Mix_LoadMUS(MUSIC_MENU);
