@@ -19,7 +19,7 @@
 #define MX_PLANE_ST_Y (MX_WIND_H / 2 - MX_PLANE_H / 2)
 
 #define MX_BTN_W 300
-#define MX_BTN_H 150
+#define MX_BTN_H 60
 #define MX_BTN_X ((MX_WIND_W - MX_BTN_W) / 2)
 #define MX_BTN_Y (MX_WIND_H / 2 - MX_BTN_H)
 #define GAME_LIFE 3
@@ -44,8 +44,8 @@
 #define MUSIC_MENU "resource/audio/space_oddity.mp3"
 
 // colors
-#define TEAL {10, 128, 128, 0}
-#define ORANGE {255, 100, 0, 0}
+#define TEAL {0, 0, 0, 0}
+#define ORANGE {255, 255, 255, 0}
 #define GREEN {144, 178, 71, 0}
 
 // includes
