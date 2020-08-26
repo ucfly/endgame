@@ -64,10 +64,10 @@ typedef struct s_world {
     float y;
     float w;
     float h;
-    int cnt;
+    char *cnt;
+    int cnt_int;
     float dy;
     int dw;
-    char *hello;
     int life;
 
 }              t_world;
@@ -97,6 +97,7 @@ typedef struct s_state {
 
 // funcs
 char *mx_strcpy(char *dst, const char *src);
+char *mx_int_to_str(int n);
 
 int mx_strlen(const char *s);
 

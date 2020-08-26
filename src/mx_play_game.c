@@ -67,21 +67,11 @@ static void scale_car(t_state *game) {
     }
 }
 
-// static void render_score(t_state *game) {
-
-//     TTF_Font *font = TTF_OpenFont("resource/font/Sansation-Bold.ttf", 25);
-//     SDL_Color score_color = ORANGE;
-//     draw_text (score_color, 20, 20, "SCORE: ", game->renderer, font);
-//     draw_text (score_color, 120, 20,  game->plane.hello, game->renderer, font);
-//     // SDL_RenderPresent(game->renderer);
-// }
-
 static void is_over(t_state *game) {
     
     switch (game->plane.dw) {
     case 1: 
-        game->plane.cnt++;
-        game->plane.hello = "kukusiki \n";
+        game->plane.cnt_int++;
         break;
     case -1:
         game->plane.life--;
@@ -91,42 +81,45 @@ static void is_over(t_state *game) {
     }
 }
 
-// void mx_score_to_str(t_state *game){
-//     char *result = NULL;
-//     int leng;
-//     int cnt = game->plane.cnt;
-//     int dig;
-//     int rest;
+static char int_to_char(int n) {
+    char result;
+    int temp = n;
 
-//     for (leng = 1; cnt > 0; leng++) {
-//         cnt /= 10;
-//     }
+    if(temp > 9)
+        mx_int_to_str(n / 10);
 
-//    result = (char*)malloc(leng+1);
-//     if (result == NULL) {
-//         exit(1);
-//     }
+    result = temp % 10 + 48;
+    return result;
+}
 
-//     cnt = game->plane.cnt;
 
-//     for (int i = leng; i < 0; i--) {
-//         dig = cnt % 10;
-//         cnt /= 10;
+char *mx_int_to_str(int n) {
+    int temp = n;
+    int i;
+    char *result = NULL;
+    int count = 0;
+    if (n >= 0) {
+    for(count = 0; temp > 0; count++)
+        temp /= 10;
 
-//         result[i] = '\0';
-//         if (i != leng)
-//             result[i] = dig;
-//     }
-
-//     game->plane.hello = result;
-//     free(result);
-// }
-
+    result = malloc(count + 1);
+    for(i = 0; i <= count; i++)
+        result[i] = '\0';
+    
+    temp = n; 
+ 
+    for(i = count; i >= 0; i--) {
+        if (i == count)
+            result[i] = '\0';
+        else
+            result[i] = int_to_char(temp);    
+        }
+    }
+    return result;
+}
 
 void mx_play_game(t_state *game) {
     gravitation (game);
-    
-    // mx_score_to_str(game);
 
     if (game->gate.w < MX_PLANE_W * 2) {
         scale_gate(game);
