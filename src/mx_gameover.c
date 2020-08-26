@@ -1,9 +1,10 @@
 #include "game.h"
 // #include <stdbool.h>
 
-int show_menu(SDL_Renderer *renderer) {
-    bool running = true;
+e_scenes mx_gameover(SDL_Renderer *renderer) {
+    int running = 1;
     SDL_Event event;
+    e_scenes result = MENU_STATE;
     int index_menu = 1;
     TTF_Init();
     if (TTF_Init() == -1) {
@@ -28,7 +29,7 @@ int show_menu(SDL_Renderer *renderer) {
     
     SDL_Rect backgroundRect = {0, 0, MX_WIND_W, MX_WIND_H};
     SDL_Texture *imgBackground =
-            IMG_LoadTexture(renderer, "resource/img/empty_back.png");
+            IMG_LoadTexture(renderer, "resource/img/GameOver.png");
 
     while (running) {
         color.r = 0;
@@ -37,16 +38,16 @@ int show_menu(SDL_Renderer *renderer) {
         color.a = 0;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_KEYUP) {
-                // if (event.key.keysym.sym == SDLK_ESCAPE) {
-                //     return 3;
-                // }
-                if (event.key.keysym.sym == SDLK_UP) {
-                    index_menu = (index_menu > 1) ? (index_menu - 1) : 3;
+                if (event.key.keysym.sym == SDLK_ESCAPE) {
+                    return EXIT_STATE;
+                }
+                if (event.key.keysym.sym == SDLK_LEFT) {
+                    index_menu = 1;
                     
                 }
-                if (event.key.keysym.sym == SDLK_DOWN) {
+                if (event.key.keysym.sym == SDLK_RIGHT) {
                     
-                    index_menu = (index_menu < 3) ? (index_menu + 1) : 1;
+                    index_menu = 2;
 
                 }
                 if (event.key.keysym.sym == SDLK_RETURN) {
@@ -57,7 +58,10 @@ int show_menu(SDL_Renderer *renderer) {
                     
                     SDL_DestroyTexture(imgBackground);
                     TTF_CloseFont(font);
-                    return index_menu;
+                    if (index_menu == 1) 
+                        return GAME_STATE;
+                    else 
+                        return MENU_STATE;
                 }
             }
         }
@@ -69,34 +73,22 @@ int show_menu(SDL_Renderer *renderer) {
         
         if (index_menu == 1) {
             color.r = 0;
-            draw_text(color_selected, play_btn.x + 40, play_btn.y+50, "PLAY", renderer, font);
+            mx_draw_text(color_selected, play_btn.x + 40, play_btn.y+50, "REPLAY", renderer, font);
             color.r = 255;
-            draw_text(color, board_btn.x + 40 , board_btn.y+50, "LEADERBOARD", renderer, font);
-            color.r = 255;
-            draw_text(color, exit_btn.x + 40 , exit_btn.y+50, "QUIT", renderer, font);
+            mx_draw_text(color, board_btn.x + 40 , board_btn.y+150, "MENU", renderer, font);
            
         } else if (index_menu == 2) {
             color.r = 255;
-            draw_text(color, play_btn.x + 40, play_btn.y+50, "PLAY", renderer, font);
+            mx_draw_text(color, play_btn.x + 40, play_btn.y+150, "REPLAY", renderer, font);
             color.r = 0;
-            draw_text(color_selected,board_btn.x + 40 , board_btn.y+50, "LEADERBOARD", renderer, font);
-            color.r = 255;
-            draw_text(color, exit_btn.x + 40, exit_btn.y+50, "QUIT", renderer, font);
-        
-        } else if (index_menu == 3) {
-            color.r = 255;
-            draw_text(color, play_btn.x + 40, play_btn.y+50, "PLAY", renderer, font);
-            color.r = 255;
-            draw_text(color, board_btn.x + 40, board_btn.y+50, "LEADERBOARD", renderer, font);
-            color.r = 0;
-            draw_text(color_selected, exit_btn.x + 40, exit_btn.y+50, "QUIT", renderer, font);
-        
-        } 
+            mx_draw_text(color_selected,board_btn.x + 40 , board_btn.y+50, "MENU", renderer, font);
+
+        }
         
         usleep(100);
         SDL_RenderPresent(renderer);
     }
     SDL_DestroyTexture(imgBackground);
 
-    return 1;
+    return result;
 }

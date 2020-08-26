@@ -63,6 +63,6 @@ void mx_load_game(t_state *game) {
     game->space.y = 0;
     game->space.w = MX_WIND_W;
     game->space.h = MX_WIND_H;
-
+    game->plane.life = GAME_LIFE;
     // SDL_FreeSurface(surf);
 }
