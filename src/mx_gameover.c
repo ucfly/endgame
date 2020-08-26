@@ -1,5 +1,4 @@
 #include "game.h"
-// #include <stdbool.h>
 
 e_scenes mx_gameover(SDL_Renderer *renderer) {
     int running = 1;
@@ -21,9 +20,6 @@ e_scenes mx_gameover(SDL_Renderer *renderer) {
 
 
     SDL_Rect backgroundRect = {0, 0, MX_WIND_W, MX_WIND_H};
-    
-    // SDL_Rect replay_btn = {MX_BTN_Y, MX_BTN_X + MX_BTN_H, MX_BTN_W , MX_BTN_H};
-    // SDL_Rect menu_btn = {MX_BTN_Y + MX_BTN_W + 40, MX_BTN_X + MX_BTN_H, MX_BTN_W, MX_BTN_H};
 
     SDL_Rect replay_btn = {MX_BTN_X - MX_BTN_W - 20,
                            MX_BTN_X + MX_BTN_H, 

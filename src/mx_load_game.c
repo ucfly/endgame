@@ -72,6 +72,16 @@ void mx_load_game(t_state *game) {
     }
     game->heart_img = SDL_CreateTextureFromSurface(game->renderer, surf);
 
+    surf = IMG_Load(HEART_EMPTY);
+    if (surf == NULL) {
+        mx_printerr("Can't load empty heart");
+        SDL_Quit();
+        exit(1);
+    }
+    game->heart_empty_img = SDL_CreateTextureFromSurface(game->renderer, surf);
+
+    
+
 
     SDL_FreeSurface(surf);
 

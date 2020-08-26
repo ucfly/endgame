@@ -1,7 +1,6 @@
 #include "game.h"
 
 char *mx_int_to_str(int n) {
-    printf("n = %i", n);
     t_calculation to_str = {n, n, 0, 0, 0};
     char *result = NULL;
 
@@ -25,7 +24,6 @@ char *mx_int_to_str(int n) {
                 result[i] = to_str.rem + 48;
             }
         }
-        printf("result = %s\n", result);
     }
     return result;
 }

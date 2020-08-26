@@ -22,6 +22,7 @@
 #define MX_BTN_H 60
 #define MX_BTN_X ((MX_WIND_W - MX_BTN_W) / 2)
 #define MX_BTN_Y (MX_WIND_H / 2 - MX_BTN_H)
+#define HEART_SIZE 30
 #define GAME_LIFE 3
 
 #define MX_R_MENU 0
@@ -31,6 +32,7 @@
 #define MX_R_EXIT -1
 
 #define HEART "resource/img/heart.png"
+#define HEART_EMPTY "resource/img/heart_empty.png"
 
 #define CIRCLE  "resource/img/circles/circle_orange.png"
 #define CIRCLE2  "resource/img/circles/circle_green.png"
@@ -107,6 +109,7 @@ typedef struct s_state {
     t_world gate2;
     t_world space;
     t_world heart;
+    t_world heart_empty;
 
     // imgs
     SDL_Texture *bg;
@@ -115,6 +118,8 @@ typedef struct s_state {
     SDL_Texture *gate_img;
     SDL_Texture *gate2_img;
     SDL_Texture *heart_img;
+    SDL_Texture *heart_empty_img;
+    SDL_Texture *life_img;
 
     SDL_Renderer *renderer;
     Mix_Music *bg_music;

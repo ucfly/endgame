@@ -42,7 +42,25 @@ void mx_do_render_mult(SDL_Renderer *rend, t_state *game) {
     SDL_RenderFillRect(rend, &plane_p2);
     SDL_RenderCopy(rend, game->car, NULL, &plane_p2);
 
-    // TTF_CloseFont(game->font); 
+    for (int i = 3; i > 0; i--) {
+    int heart_x = HEART_SIZE + HEART_SIZE * i;
+    game->life_img = (i <= game->plane.life) 
+                        ? game->heart_img 
+                        : game->heart_empty_img;
+
+    SDL_Rect heart_1_p = {heart_x, HEART_SIZE * 2, HEART_SIZE, HEART_SIZE};
+    SDL_RenderCopy(rend, game->life_img, NULL, &heart_1_p);
+    }
+
+    for (int i = 3; i > 0; i--) {
+    int heart_x = MX_WIND_W - HEART_SIZE - HEART_SIZE * i;
+    game->life_img = (i <= game->plane2.life) 
+                        ? game->heart_img 
+                        : game->heart_empty_img;
+
+    SDL_Rect heart_2_p = {heart_x, HEART_SIZE * 2, HEART_SIZE, HEART_SIZE};
+    SDL_RenderCopy(rend, game->life_img, NULL, &heart_2_p);
+    }
     
     SDL_Color score_color_or = ORANGE;
 

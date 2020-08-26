@@ -12,7 +12,7 @@ int main(void) {
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
     TTF_Init();
 
-    wind = SDL_CreateWindow("Kuku", SDL_WINDOWPOS_UNDEFINED,
+    wind = SDL_CreateWindow("πLot", SDL_WINDOWPOS_UNDEFINED,
                             SDL_WINDOWPOS_UNDEFINED, MX_WIND_W, MX_WIND_H, 0);
 
     game.renderer = SDL_CreateRenderer(
@@ -38,26 +38,28 @@ int main(void) {
                 break;
             case GAMEOVER_STATE:
                 game.status = mx_gameover(game.renderer);
-                // printf("GAME OWER!!!");
                 break;
             case MULTIPLAYER_STATE:
                 game.status = mx_multiplayer(wind, &game);
-                // printf("GAME OWER!!!");
                 break;
             case LEADERBOARD_STATE:
                 game.status = mx_leaderboard(game.renderer);
-                // printf("LEADERBOARD!!!");
                 break;
             case EXIT_STATE:
                 game.exit = 1;
-                printf("EXIT");
                 break;
         }
     }
 
     SDL_DestroyTexture(game.bg);
     SDL_DestroyTexture(game.car);
-    SDL_DestroyTexture(game.gate_img);
+    SDL_DestroyTexture(game.car2);
+    SDL_DestroyTexture(game.gate_img);    
+    SDL_DestroyTexture(game.gate2_img);    
+    SDL_DestroyTexture(game.heart_img);
+    SDL_DestroyTexture(game.heart_empty_img);
+    SDL_DestroyTexture(game.life_img);
+
     SDL_DestroyWindow(wind);
     SDL_DestroyRenderer(game.renderer);
 
@@ -67,6 +69,5 @@ int main(void) {
     TTF_CloseFont(game.font);
     SDL_Quit();
 
-    system("leaks -q game");
     return 0;
 }

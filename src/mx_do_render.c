@@ -11,7 +11,7 @@ void mx_do_render(SDL_Renderer *rend, t_state *game) {
     SDL_RenderCopy(rend, game->bg, NULL, &bg_rect);
 
     SDL_SetRenderDrawColor(rend, 25, 50, 200, 255);
-    SDL_Rect tor_p = {game->gate.x,
+    SDL_Rect tor_p = {game->gate.x, 
                       game->gate.y,
                       game->gate.w,
                       game->gate.h};
@@ -25,25 +25,25 @@ void mx_do_render(SDL_Renderer *rend, t_state *game) {
                         game->plane.h};
     // SDL_RenderFillRect(rend, &plane_p);
     SDL_RenderCopy(rend, game->car, NULL, &plane_p);
-    
+
+    for (int i = 3; i > 0; i--) {
+        int heart_x = HEART_SIZE + HEART_SIZE * i;
+        game->life_img = (i <= game->plane.life) 
+                            ? game->heart_img 
+                            : game->heart_empty_img;
+
+        SDL_Rect heart_p = {heart_x, HEART_SIZE * 2, HEART_SIZE, HEART_SIZE};
+        SDL_RenderCopy(rend, game->life_img, NULL, &heart_p);
+    }
+
     SDL_Color score_color = ORANGE;
 
     char *score = mx_int_to_str(game->plane.cnt);
-    printf("score = %s\n", score);
-    mx_draw_text(score_color,
-                 20,
-                 20,
-                 "SCORE: ",
-                 game->renderer,
-                 game->font);
-    mx_draw_text(score_color,
-                 120,
-                 20,
-                 score,
-                 game->renderer,
-                 game->font);
+    mx_draw_text(score_color, 20, 20, "SCORE: ", game->renderer, game->font);
+    mx_draw_text(score_color, 120, 20, score, game->renderer, game->font);
     free(score);
     score = NULL;
 
     SDL_RenderPresent(rend);
 }
+

@@ -130,7 +130,6 @@ e_scenes mx_menu(SDL_Renderer *renderer) {
         usleep(100);
         SDL_RenderPresent(renderer);
     }
-
     SDL_DestroyTexture(btn_img);
     SDL_DestroyTexture(menu_bg);
     TTF_CloseFont(font);
