@@ -86,8 +86,7 @@ typedef struct s_world {
     float y;
     float w;
     float h;
-    char *cnt;
-    int cnt_int;
+    int cnt;
     float dy;
     int dw;
     int life;

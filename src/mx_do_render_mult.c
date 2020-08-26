@@ -46,7 +46,7 @@ void mx_do_render_mult(SDL_Renderer *rend, t_state *game) {
     
     SDL_Color score_color_or = ORANGE;
 
-    char *score_1 =  mx_int_to_str(game->plane.cnt_int);
+    char *score_1 =  mx_int_to_str(game->plane.cnt);
     mx_draw_text(score_color_or,
                  20,
                  20,
@@ -65,7 +65,7 @@ void mx_do_render_mult(SDL_Renderer *rend, t_state *game) {
 
     SDL_Color score_color_te = GREEN;
 
-    char *score_2 = mx_int_to_str(game->plane2.cnt_int);
+    char *score_2 = mx_int_to_str(game->plane2.cnt);
     mx_draw_text(score_color_te,
                  MX_WIND_W - 220,
                  20,

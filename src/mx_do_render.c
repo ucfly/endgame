@@ -30,7 +30,7 @@ void mx_do_render(SDL_Renderer *rend, t_state *game) {
     
     SDL_Color score_color = ORANGE;
 
-    char *score = mx_int_to_str(game->plane.cnt_int);
+    char *score = mx_int_to_str(game->plane.cnt);
     printf("score = %s\n", score);
     mx_draw_text(score_color,
                  20,
