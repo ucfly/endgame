@@ -6,17 +6,17 @@ void mx_load_game(t_state *game) {
 
     //load BG musix
 
-    Mix_Music *namemusic = Mix_LoadMUS("resource/audio/space_oddity.mp3");
+    Mix_Music *namemusic = Mix_LoadMUS(MUSIC_MENU);
     if(!namemusic) {    
-        printf("Mix_LoadMUS(\"namemusic.mp3\"): %s\n", Mix_GetError());
+        printf("Mix_LoadMUS(\"music.mp3\"): %s\n", Mix_GetError());
     // this might be a critical error...
     }
     game->bg_music = namemusic;
 
-    game->font = TTF_OpenFont("resource/font/Sansation-Bold.ttf", 25);
+    game->font = TTF_OpenFont(FONT_MAIN, 25);
 
     // space bg:
-    surf = IMG_Load("resource/img/space_bg.jpg");
+    surf = IMG_Load(BACKGROUND_IMG);
     if (surf == NULL) {
         mx_printerr("can't find space bg");
         SDL_Quit();
@@ -26,7 +26,7 @@ void mx_load_game(t_state *game) {
     game->bg = SDL_CreateTextureFromSurface(game->renderer, surf);
 
     // orange circle
-    surf = IMG_Load("resource/img/circle.png");
+    surf = IMG_Load(CIRCLE);
     if (surf == NULL) {
         mx_printerr("Can't load orange gate");
         SDL_Quit();
@@ -35,7 +35,7 @@ void mx_load_game(t_state *game) {
 
     game->gate_img = SDL_CreateTextureFromSurface(game->renderer, surf);
     
-    surf = IMG_Load("resource/img/circle_green .png");
+    surf = IMG_Load(CIRCLE2);
     if (surf == NULL) {
         mx_printerr("Can't load orange gate");
         SDL_Quit();
@@ -46,16 +46,16 @@ void mx_load_game(t_state *game) {
     
     // car
 
-    surf = IMG_Load("resource/img/space_car.png");
+    surf = IMG_Load(PLANE);
     if (surf == NULL) {
         mx_printerr("Can't load car");
         SDL_Quit();
         exit(1);
     }
 
-    game->car2 = SDL_CreateTextureFromSurface(game->renderer, surf);
+    game->car = SDL_CreateTextureFromSurface(game->renderer, surf);
 
-    surf = IMG_Load("resource/img/space_car2.png");
+    surf = IMG_Load(PLANE2);
     if (surf == NULL) {
         mx_printerr("Can't load car");
         SDL_Quit();

@@ -15,7 +15,7 @@ void mx_do_render(SDL_Renderer *rend, t_state *game) {
                       game->gate.y,
                       game->gate.w,
                       game->gate.h};
-     SDL_RenderFillRect(rend, &tor_p);
+    //  SDL_RenderFillRect(rend, &tor_p);
     SDL_RenderCopy(rend, game->gate_img, NULL, &tor_p);
 
     SDL_SetRenderDrawColor(rend, 250, 50, 20, 0);
@@ -23,7 +23,7 @@ void mx_do_render(SDL_Renderer *rend, t_state *game) {
                         game->plane.y,
                         game->plane.w,
                         game->plane.h};
-    SDL_RenderFillRect(rend, &plane_p);
+    // SDL_RenderFillRect(rend, &plane_p);
     SDL_RenderCopy(rend, game->car, NULL, &plane_p);
 
     // TTF_CloseFont(game->font); 
