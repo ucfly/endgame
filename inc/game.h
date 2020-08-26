@@ -54,6 +54,7 @@ typedef enum e_scenestatus {
     MENU_STATE,
     GAME_STATE,
     GAMEOVER_STATE,
+    MULTIPLAYER_STATE,
     LEADERBOARD_STATE,
     EXIT_STATE
 }    e_scenes;
@@ -77,12 +78,16 @@ typedef struct s_state {
     // objects
     t_world plane;
     t_world gate;
+    t_world plane2;
+    t_world gate2;
     t_world space;
 
     // imgs
     SDL_Texture *bg;
     SDL_Texture *car;
+    SDL_Texture *car2;
     SDL_Texture *gate_img;
+    SDL_Texture *gate2_img;
 
     SDL_Renderer *renderer;
     Mix_Music *bg_music;
@@ -110,6 +115,7 @@ void mx_load_game(t_state *game);
 e_scenes mx_menu(SDL_Renderer *renderer);
 e_scenes mx_leaderboard(SDL_Renderer *renderer);
 e_scenes mx_game(SDL_Window *window, t_state *game);
+e_scenes mx_multiplayer(SDL_Window *window, t_state *game);
 e_scenes mx_gameover(SDL_Renderer *renderer);
 
 

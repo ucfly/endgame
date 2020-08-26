@@ -34,7 +34,16 @@ void mx_load_game(t_state *game) {
     }
 
     game->gate_img = SDL_CreateTextureFromSurface(game->renderer, surf);
+    
+    surf = IMG_Load("resource/img/circle_green .png");
+    if (surf == NULL) {
+        mx_printerr("Can't load orange gate");
+        SDL_Quit();
+        exit(1);
+    }
 
+    game->gate2_img = SDL_CreateTextureFromSurface(game->renderer, surf);
+    
     // car
 
     surf = IMG_Load("resource/img/space_car.png");
@@ -44,7 +53,16 @@ void mx_load_game(t_state *game) {
         exit(1);
     }
 
-    game->car = SDL_CreateTextureFromSurface(game->renderer, surf);
+    game->car2 = SDL_CreateTextureFromSurface(game->renderer, surf);
+
+    surf = IMG_Load("resource/img/space_car2.png");
+    if (surf == NULL) {
+        mx_printerr("Can't load car");
+        SDL_Quit();
+        exit(1);
+    }
+
+    game->car2 = SDL_CreateTextureFromSurface(game->renderer, surf);
 
     SDL_FreeSurface(surf);
 
@@ -56,6 +74,8 @@ void mx_load_game(t_state *game) {
     game->plane.dw = 0;
     game->plane.cnt_int = 0;
 
+    game->plane2 = game->plane;
+
     game->gate.x = MX_RANDOM_X;
     game->gate.y = MX_RANDOM_Y;
     game->gate.w = MX_RING_W;
@@ -66,5 +86,6 @@ void mx_load_game(t_state *game) {
     game->space.w = MX_WIND_W;
     game->space.h = MX_WIND_H;
     game->plane.life = GAME_LIFE;
+    game->plane2.life = GAME_LIFE;
     // SDL_FreeSurface(surf);
 }

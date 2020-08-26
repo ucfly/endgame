@@ -1,11 +1,14 @@
 #include "game.h"
 
-e_scenes mx_game(SDL_Window *window, t_state *game) {
+e_scenes mx_multiplayer(SDL_Window *window, t_state *game) {
     SDL_Event e;
     e_scenes status = MENU_STATE;
     int running = 1;
     game->plane.life = 3;
     game->plane.cnt = 0;
+    game->plane2.life = 3;
+    game->plane2.cnt = 0;
+
     while (running) {
         while (SDL_PollEvent(&e)) {
             switch (e.type) {
@@ -20,10 +23,9 @@ e_scenes mx_game(SDL_Window *window, t_state *game) {
                     switch (e.key.keysym.sym) {
                         case SDLK_q:
                             return GAMEOVER_STATE;
-                            // game.exit = 0;
                             break;
                         case SDLK_UP:
-                        game->plane.dy = -2;
+                            game->plane.dy = -2;
                         break;
 
                         default:
@@ -67,7 +69,7 @@ e_scenes mx_game(SDL_Window *window, t_state *game) {
         mx_do_render(game->renderer, game);
 
         
-        if (game->plane.life <= 0)
+        if (game->plane.life <= 0 || game->plane2.life <= 0)
             return GAMEOVER_STATE;
     }
 

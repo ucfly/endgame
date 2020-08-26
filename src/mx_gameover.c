@@ -16,17 +16,24 @@ e_scenes mx_gameover(SDL_Renderer *renderer) {
     SDL_Color color = TEAL;
     SDL_Color color_selected = ORANGE;
 
-    SDL_Texture *menu_bg =
-        IMG_LoadTexture(renderer, "resource/img/GameOver.png");
+    SDL_Texture *menu_bg = IMG_LoadTexture(renderer, "resource/img/GameOver.png");
     SDL_Texture *btn_img = IMG_LoadTexture(renderer, "resource/img/empty.PNG");
 
 
     SDL_Rect backgroundRect = {0, 0, MX_WIND_W, MX_WIND_H};
     
-    SDL_Rect play_btn = {MX_BTN_X, MX_BTN_Y, MX_BTN_W , MX_BTN_H};
-    SDL_Rect exit_btn = {MX_BTN_X, MX_BTN_Y + MX_BTN_H, MX_BTN_W, MX_BTN_H};
-    SDL_Rect board_btn = {MX_BTN_X, MX_BTN_Y + MX_BTN_H / 2, MX_BTN_W, MX_BTN_H};
+    // SDL_Rect replay_btn = {MX_BTN_Y, MX_BTN_X + MX_BTN_H, MX_BTN_W , MX_BTN_H};
+    // SDL_Rect menu_btn = {MX_BTN_Y + MX_BTN_W + 40, MX_BTN_X + MX_BTN_H, MX_BTN_W, MX_BTN_H};
 
+    SDL_Rect replay_btn = {MX_BTN_X - MX_BTN_W - 20,
+                           MX_BTN_X + MX_BTN_H, 
+                           MX_BTN_W,
+                           MX_BTN_H};
+    SDL_Rect menu_btn = {MX_BTN_X + MX_BTN_W + 20,
+                         MX_BTN_X + MX_BTN_H,
+                         MX_BTN_W,
+                         MX_BTN_H};
+   
     while (running) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_KEYUP) {
@@ -57,17 +64,17 @@ e_scenes mx_gameover(SDL_Renderer *renderer) {
         }
         SDL_RenderCopy(renderer, menu_bg, NULL, &backgroundRect);
        
-        SDL_RenderCopy(renderer, btn_img, NULL, &play_btn);
-        SDL_RenderCopy(renderer, btn_img, NULL, &board_btn);
-        SDL_RenderCopy(renderer, btn_img, NULL, &exit_btn);
+        SDL_RenderCopy(renderer, btn_img, NULL, &replay_btn);
+        SDL_RenderCopy(renderer, btn_img, NULL, &menu_btn);
+
         
         if (index_menu == 1) {
-            mx_draw_text(color_selected, play_btn.x + 40, play_btn.y+50, "REPLAY", renderer, font);
-            mx_draw_text(color, board_btn.x + 40 , board_btn.y+150, "MENU", renderer, font);
+            mx_draw_text(color_selected, replay_btn.x + 40, replay_btn.y+50, "REPLAY", renderer, font);
+            mx_draw_text(color, menu_btn.x + 40 , menu_btn.y+50, "MENU", renderer, font);
            
         } else if (index_menu == 2) {
-            mx_draw_text(color, play_btn.x + 40, play_btn.y+150, "REPLAY", renderer, font);
-            mx_draw_text(color_selected, board_btn.x + 40 , board_btn.y+50, "MENU", renderer, font);
+            mx_draw_text(color, replay_btn.x + 40, replay_btn.y+50, "REPLAY", renderer, font);
+            mx_draw_text(color_selected, menu_btn.x + 40 , menu_btn.y+50, "MENU", renderer, font);
 
         }
         

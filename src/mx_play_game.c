@@ -1,33 +1,34 @@
 #include "game.h"
 
-static void scale_gate(t_state *game) {
-    game->gate.w++;
-    game->gate.h++;
+static void scale_gate(t_world *gate) {
+    gate->w++;
+    gate->h++;
 
-    if (game->gate.x > (game->gate.w - 200)) {
-        game->gate.x -= 1;
+    if (gate->x > (gate->w - 200)) {
+        gate->x -= 1;
     }
     else {
-        game->gate.x += 0.5;
+        gate->x += 0.5;
     }
 
-    if (game->gate.y > (game->gate.w - 200)) {
-        game->gate.y -= 2;
+    if (gate->y > (gate->w - 200)) {
+        gate->y -= 2;
     }
     else {
-        game->gate.y++;
+        gate->y++;
     }
    
 }
 
-static void initial_state(t_state *game) {
-    game->gate.x = MX_RANDOM_X;
-    game->gate.y = MX_RANDOM_Y;
-    game->gate.w = MX_RING_W;
-    game->gate.h = MX_RING_H ;
+static void initial_state(t_world *gate, t_world *plane) {
+    gate->x = MX_RANDOM_X;
+    gate->y = MX_RANDOM_Y;
+    gate->w = MX_RING_W;
+    gate->h = MX_RING_H ;
 
-    game->plane.x = MX_PLANE_ST_X;
-    game->plane.dw = 0;
+    plane->x = MX_PLANE_ST_X;
+    // gate.plane.
+    plane->dw = 0;
 }
 
 static int check_pass(t_state *game) {
@@ -50,31 +51,31 @@ static void gravitation (t_state *game) {
     game->plane.dy += MX_GRAVITY;
 }
 
-static void scale_car(t_state *game) {
-    switch (game->plane.dw) {
+static void scale_car(t_world *plane) {
+    switch (plane->dw) {
         case -1:
-            game->plane.w -= 5 * game->plane.dw;
-            game->plane.h -= 5 * game->plane.dw;
+            plane->w -= 5 * plane->dw;
+            plane->h -= 5 * plane->dw;
             break;
         case 1:
-            game->plane.w -= 5 * game->plane.dw;
-            game->plane.h -= 5 * game->plane.dw;
+            plane->w -= 5 * plane->dw;
+            plane->h -= 5 * plane->dw;
             break;
         default:
-            game->plane.w = MX_PLANE_W;
-            game->plane.h = MX_PLANE_H;
+            plane->w = MX_PLANE_W;
+            plane->h = MX_PLANE_H;
             break;
     }
 }
 
 static void is_over(t_state *game) {
     
-    switch (game->plane.dw) {
+    switch (plane->dw) {
     case 1: 
-        game->plane.cnt_int++;
+        plane->cnt++;
         break;
     case -1:
-        game->plane.life--;
+        plane->life--;
         break;
     default:
         break;
@@ -122,21 +123,26 @@ void mx_play_game(t_state *game) {
     gravitation (game);
 
     if (game->gate.w < MX_PLANE_W * 2) {
-        scale_gate(game);
+        scale_gate(&game->gate);
+        scale_gate(&game->gate2);
     }
 
     if (game->gate.w == MX_PLANE_W * 1.7) {
         game->plane.dw = check_pass(game);
-        is_over(game);
+        is_over(&game->plane);
+        is_over(&game->plane2);
     }
 
     if (game->gate.w > MX_PLANE_W * 1.7 && game->gate.w < MX_PLANE_W * 2) {
-        scale_car(game);
+        scale_car(&game->plane);
+        scale_car(&game->plane2);
     }
 
     if (game->gate.w >= MX_PLANE_W * 2) {
-        initial_state(game);
-        scale_car(game);
+        initial_state(&game->gate, &game->plane);
+        initial_state(&game->gate2, &game->plane2);
+        scale_car(&game->plane);
+        scale_car(&game->plane2);
     }
 }
 
