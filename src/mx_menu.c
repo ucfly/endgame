@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "game.h"
 
 e_scenes mx_menu(SDL_Renderer *renderer) {
@@ -138,3 +139,5 @@ e_scenes mx_menu(SDL_Renderer *renderer) {
 
     return result;
 }
+=======
+>>>>>>> d0bf89dc821091afc04e7212f310b1142674f4a6

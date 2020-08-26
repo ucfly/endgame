@@ -44,7 +44,10 @@
 // colors
 #define TEAL {0, 0, 0, 0}
 #define ORANGE {255, 255, 255, 0}
+<<<<<<< HEAD
 #define GREEN {144, 178, 71, 0}
+=======
+>>>>>>> d0bf89dc821091afc04e7212f310b1142674f4a6
 
 // includes
 #include <SDL2_image/SDL_image.h>
