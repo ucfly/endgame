@@ -3,7 +3,8 @@ dist: trusty
 
 language: c
 
-os: osx, linux
+os: osx
+os: linux
 
 compiler: clang
 
