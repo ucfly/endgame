@@ -53,12 +53,12 @@ static void gravitation (t_state *game) {
 static void scale_car(t_state *game) {
     switch (game->plane.dw) {
         case -1:
-            game->plane.w -= 4 * game->plane.dw;
-            game->plane.h -= 2 * game->plane.dw;
+            game->plane.w -= 5 * game->plane.dw;
+            game->plane.h -= 5 * game->plane.dw;
             break;
         case 1:
-            game->plane.w -= 7 * game->plane.dw;
-            game->plane.h -= 4 * game->plane.dw;
+            game->plane.w -= 5 * game->plane.dw;
+            game->plane.h -= 5 * game->plane.dw;
             break;
         default:
             game->plane.w = MX_PLANE_W;
@@ -77,68 +77,71 @@ static void scale_car(t_state *game) {
 // }
 
 static void is_over(t_state *game) {
+    
     switch (game->plane.dw) {
     case 1: 
         game->plane.cnt++;
         game->plane.hello = "kukusiki \n";
+        break;
     case -1:
-        write(1, "\numir\n", 6);
+        game->plane.life--;
         break;
     default:
         break;
     }
 }
 
-void mx_score_to_str(t_state *game){
-    char *result = NULL;
-    int leng;
-    int cnt = game->plane.cnt;
-    int dig;
+// void mx_score_to_str(t_state *game){
+//     char *result = NULL;
+//     int leng;
+//     int cnt = game->plane.cnt;
+//     int dig;
+//     int rest;
 
-    for (leng = 1; cnt > 0; leng++) {
-        cnt /= 10;
-    }
+//     for (leng = 1; cnt > 0; leng++) {
+//         cnt /= 10;
+//     }
 
-   result = (char*)malloc(leng+1);
-    if (result == NULL) {
-        exit(1);
-    }
+//    result = (char*)malloc(leng+1);
+//     if (result == NULL) {
+//         exit(1);
+//     }
 
-    cnt = game->plane.cnt;
+//     cnt = game->plane.cnt;
 
-    for (int i = leng; i < 0; i--) {
-        dig = cnt % 10;
-        cnt /= 10;
+//     for (int i = leng; i < 0; i--) {
+//         dig = cnt % 10;
+//         cnt /= 10;
 
-        result[i] = '\0';
-        if (i != leng)
-            result[i] = dig;
-    }
+//         result[i] = '\0';
+//         if (i != leng)
+//             result[i] = dig;
+//     }
 
-    game->plane.hello = result;
-    free(result);
-}
+//     game->plane.hello = result;
+//     free(result);
+// }
 
 
 void mx_play_game(t_state *game) {
     gravitation (game);
     
-    mx_score_to_str(game);
+    // mx_score_to_str(game);
 
-    if (game->gate.w < MX_PLANE_W + 80) {
+    if (game->gate.w < MX_PLANE_W * 2) {
         scale_gate(game);
     }
 
-    if (game->gate.w == MX_PLANE_W + 40) {
+    if (game->gate.w == MX_PLANE_W * 1.7) {
         game->plane.dw = check_pass(game);
         is_over(game);
     }
 
-    if (game->gate.w > MX_PLANE_W + 40 && game->gate.w < MX_PLANE_W + 80) {
+    if (game->gate.w > MX_PLANE_W * 1.7 && game->gate.w < MX_PLANE_W * 2) {
         scale_car(game);
     }
 
-    if (game->gate.w >= MX_PLANE_W + 80) {
+    if (game->gate.w >= MX_PLANE_W * 2) {
         initial_state(game);
         scale_car(game);
     }

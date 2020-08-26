@@ -6,3 +6,5 @@
 *.swo
 main_check.c
 .vscode/**/*
+./endgame
+

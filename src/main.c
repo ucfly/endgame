@@ -21,69 +21,35 @@ int main(void) {
     mx_load_game(&game);
     Mix_PlayMusic(game.bg_music, -1);
 
+    game.status = MENU_STATE;
+    game.exit = 0;
     srand(time(0));
 
-    // game.exit = 0;
     game.play = MX_R_MENU;
 
-    // while(game.play != MX_R_EXIT) {
-    //     game.play = show_menu(game.renderer);
+    while (!game.exit) {
 
-    //     switch(game.play) {
-    //         case MX_R_GAME:
-    //             printf("\n GAME\n");
-    //             break;
-    //         case MX_R_OVER:
-    //             printf("\nG OVER\n");
-    //             break;
-    //         case MX_R_BOARD:
-    //             printf("\nLEADERS\n");
-    //             break;
-            
-    //     }
-    // }
-
-    while (game.exit != 4) {
-        // game.play = 0;
-        
-        game.exit = show_menu(game.renderer);
-
-        switch (game.exit) {
-            case 1:
-                while (!game.play) {
-                    game.exit = 0;
-                    game.play = mx_process_events(wind, &game);
-
-                    mx_play_game(&game);
-                    mx_do_render(game.renderer, &game);
-                }
+        switch (game.status) {
+            case MENU_STATE:
+                game.status = mx_menu(game.renderer); 
                 break;
-            case 2:
+            case GAME_STATE:
+                game.status = mx_game(wind, &game);
+                break;
+            case GAMEOVER_STATE:
+                game.status = mx_gameover(game.renderer);
+                printf("GAME OWER!!!");
+                break;
+            case LEADERBOARD_STATE:
+                game.status = mx_leaderboard(game.renderer);
                 printf("LEADERBOARD!!!");
-     
                 break;
-            case 3:
-                game.exit = 4;
-                printf("EXIT!!!");
-                // while (!game.play) {
-                //     game.exit = 0;
-                //     game.play = mx_process_events(wind, &game);
-                //     mx_play_game(&game);
-                //     mx_do_render(game.renderer, &game);
-                // }
-                break;
-            default:
-
+            case EXIT_STATE:
+                game.exit = 1;
+                printf("EXIT");
                 break;
         }
         printf("\n kuku: %d", game.exit);
-
-        // mx_process_events(wind, &game);
-
-        // quit = mx_process_events(wind, &game);
-
-        // mx_play_game(&game);
-        // mx_do_render(game.renderer, &game);
     }
 
     SDL_DestroyTexture(game.bg);
@@ -91,7 +57,6 @@ int main(void) {
     SDL_DestroyTexture(game.gate_img);
     SDL_DestroyWindow(wind);
     SDL_DestroyRenderer(game.renderer);
-    // SDL_FreeChunk(game.bg_music);
 
     IMG_Quit();
     TTF_Quit();

@@ -1,6 +1,6 @@
 #include "game.h"
 
-void draw_text(SDL_Color color, int x, int y, char *text,
+void mx_draw_text(SDL_Color color, int x, int y, char *text,
                SDL_Renderer *renderer, TTF_Font *font) {
     SDL_Surface *text_surface = TTF_RenderText_Solid(font, text, color);
     SDL_Texture *textureGameName =

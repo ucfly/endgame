@@ -7,14 +7,14 @@
 #define MX_GRAVITY 0.02f
 
 #define MX_RING_L 5
-#define MX_RING_W 120
-#define MX_RING_H 40
+#define MX_RING_W 40
+#define MX_RING_H 40 +120
 
 #define MX_RANDOM_X ((rand() % (MX_WIND_W + 1 - 0)) +0)
 #define MX_RANDOM_Y ((rand() % (MX_WIND_H + 1 - 0)) +0)
 
-#define MX_PLANE_W 300
-#define MX_PLANE_H 100
+#define MX_PLANE_W 300/2
+#define MX_PLANE_H 240/2
 #define MX_PLANE_ST_X (MX_WIND_W / 2 - MX_PLANE_W / 2)
 #define MX_PLANE_ST_Y (MX_WIND_H / 2 - MX_PLANE_H / 2)
 
@@ -22,6 +22,7 @@
 #define MX_BTN_H 150
 #define MX_BTN_X ((MX_WIND_W - MX_BTN_W) / 2)
 #define MX_BTN_Y (MX_WIND_H / 2 - MX_BTN_H)
+#define GAME_LIFE 3
 
 #define MX_R_MENU 0
 #define MX_R_GAME 1
@@ -49,6 +50,14 @@
 #include <unistd.h>
 #include <time.h>
 
+typedef enum e_scenestatus {
+    MENU_STATE,
+    GAME_STATE,
+    GAMEOVER_STATE,
+    LEADERBOARD_STATE,
+    EXIT_STATE
+}    e_scenes;
+
 // structs
 typedef struct s_world {
     float x;
@@ -59,6 +68,8 @@ typedef struct s_world {
     float dy;
     int dw;
     char *hello;
+    int life;
+
 }              t_world;
 
 
@@ -79,7 +90,8 @@ typedef struct s_state {
     
     int play;
     int exit;
-    
+
+    e_scenes status;
 
 }              t_state;
 
@@ -87,7 +99,6 @@ typedef struct s_state {
 char *mx_strcpy(char *dst, const char *src);
 
 int mx_strlen(const char *s);
-int mx_process_events(SDL_Window *window, t_state *game);
 
 void mx_printerr(const char *s);
 void mx_do_render(SDL_Renderer *rend, t_state *game);
@@ -95,8 +106,13 @@ void mx_play_game(t_state *game);
 void mx_load_game(t_state *game);
 
 
-int show_menu(SDL_Renderer *renderer);
+e_scenes mx_menu(SDL_Renderer *renderer);
+e_scenes mx_leaderboard(SDL_Renderer *renderer);
+e_scenes mx_game(SDL_Window *window, t_state *game);
+e_scenes mx_gameover(SDL_Renderer *renderer);
 
-void draw_text( SDL_Color color, int x, int y, char *text, 
+
+
+void mx_draw_text( SDL_Color color, int x, int y, char *text, 
                 SDL_Renderer *renderer, TTF_Font *font);
 

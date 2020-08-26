@@ -1,10 +1,12 @@
 #include "game.h"
 // #include <stdbool.h>
 
-int show_menu(SDL_Renderer *renderer) {
-    bool running = true;
-    int index_menu = 1;
+
+e_scenes mx_menu(SDL_Renderer *renderer) {
+    int running = 1;
     SDL_Event event;
+    e_scenes result = MENU_STATE;
+    int index_menu = 1;
 
     TTF_Init();
     if (TTF_Init() == -1) {
@@ -30,80 +32,70 @@ int show_menu(SDL_Renderer *renderer) {
     while (running) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_KEYUP) {
-                switch (event.key.keysym.sym) {
-                    case SDLK_UP:
-                        index_menu = (index_menu > 1) ? (index_menu - 1) : 3;
-                        break;
-                    case SDLK_DOWN:
-                        index_menu = (index_menu < 3) ? (index_menu + 1) : 1;
-                        break;
-                    case SDLK_RETURN:
+
+                if (event.key.keysym.sym == SDLK_ESCAPE) {
+                    return EXIT_STATE;
+                }
+                if (event.key.keysym.sym == SDLK_UP) {
+                    index_menu = (index_menu > 1) ? (index_menu - 1) : 3;
+                    
+                }
+                if (event.key.keysym.sym == SDLK_DOWN) {
+                    
+                    index_menu = (index_menu < 3) ? (index_menu + 1) : 1;
+
+                }
+                if (event.key.keysym.sym == SDLK_RETURN) {
+                   
                         SDL_DestroyTexture(btn_img);
                         SDL_DestroyTexture(menu_bg);
                         TTF_CloseFont(font);
-                        return index_menu;
-                        break;
-                    default:
-                        break;
+                    if (index_menu == 1)
+                        return GAME_STATE;
+                    else if (index_menu == 2)
+                        return LEADERBOARD_STATE;
+                    else 
+                        return EXIT_STATE;
                 }
-                // if (event.key.keysym.sym == SDLK_ESCAPE) {
-                //     return 3;
-                // }
-                // if (event.key.keysym.sym == SDLK_UP) {
-                //     index_menu = (index_menu > 1) ? (index_menu - 1) : 3;
-                // }
-                // if (event.key.keysym.sym == SDLK_DOWN) {
-                //     index_menu = (index_menu < 3) ? (index_menu + 1) : 1;
-                // }
-                // if (event.key.keysym.sym == SDLK_RETURN) {
-                //     SDL_DestroyTexture(btn_img);
-                //     SDL_DestroyTexture(btn_img);
-                //     SDL_DestroyTexture(btn_img);
-
-                //     SDL_DestroyTexture(menu_bg);
-                //     TTF_CloseFont(font);
-                //     return index_menu;
-                // }
             }
         }
-
         SDL_RenderCopy(renderer, menu_bg, NULL, &backgroundRect);
-
+       
         SDL_RenderCopy(renderer, btn_img, NULL, &play_btn);
         SDL_RenderCopy(renderer, btn_img, NULL, &board_btn);
         SDL_RenderCopy(renderer, btn_img, NULL, &exit_btn);
-
+        
         switch (index_menu) {
             case 1:
-                draw_text(color_selected, play_btn.x + 40, play_btn.y + 50,
+                mx_draw_text(color_selected, play_btn.x + 40, play_btn.y + 50,
                           "PLAY", renderer, font);
-                draw_text(color, board_btn.x + 40, board_btn.y + 50,
+                mx_draw_text(color, board_btn.x + 40, board_btn.y + 50,
                           "LEADERBOARD", renderer, font);
-                draw_text(color, exit_btn.x + 40, exit_btn.y + 50, "QUIT",
+                mx_draw_text(color, exit_btn.x + 40, exit_btn.y + 50, "QUIT",
                           renderer, font);
                 break;
 
             case 2:
-                draw_text(color, play_btn.x + 40, play_btn.y + 50, "PLAY",
+                mx_draw_text(color, play_btn.x + 40, play_btn.y + 50, "PLAY",
                           renderer, font);
-                draw_text(color_selected, board_btn.x + 40, board_btn.y + 50,
+                mx_draw_text(color_selected, board_btn.x + 40, board_btn.y + 50,
                           "LEADERBOARD", renderer, font);
-                draw_text(color, exit_btn.x + 40, exit_btn.y + 50, "QUIT",
+                mx_draw_text(color, exit_btn.x + 40, exit_btn.y + 50, "QUIT",
                           renderer, font);
                 break;
 
             case 3:
-                draw_text(color, play_btn.x + 40, play_btn.y + 50, "PLAY",
+                mx_draw_text(color, play_btn.x + 40, play_btn.y + 50, "PLAY",
                           renderer, font);
-                draw_text(color, board_btn.x + 40, board_btn.y + 50,
+                mx_draw_text(color, board_btn.x + 40, board_btn.y + 50,
                           "LEADERBOARD", renderer, font);
-                draw_text(color_selected, exit_btn.x + 40, exit_btn.y + 50,
+                mx_draw_text(color_selected, exit_btn.x + 40, exit_btn.y + 50,
                           "QUIT", renderer, font);
                 break;
             default:
                 break;
         }
-
+        
         usleep(100);
         SDL_RenderPresent(renderer);
     }
@@ -113,5 +105,5 @@ int show_menu(SDL_Renderer *renderer) {
     TTF_CloseFont(font);
 
 
-    return 1;
+    return result;
 }
