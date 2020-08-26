@@ -103,12 +103,24 @@ typedef struct s_state {
 // funcs
 char *mx_strcpy(char *dst, const char *src);
 
+void mx_do_render(SDL_Renderer *rend, t_state *game);
+void mx_do_render_mult(SDL_Renderer *rend, t_state *game);
+
+void mx_play_game(t_state *game);
+void mx_play_game_mult(t_state *game);
+
+void mx_load_game(t_state *game);
+
 int mx_strlen(const char *s);
+int mx_check_pass(t_world *gate, t_world *plane);
 
 void mx_printerr(const char *s);
-void mx_do_render(SDL_Renderer *rend, t_state *game);
-void mx_play_game(t_state *game);
-void mx_load_game(t_state *game);
+void mx_is_over(t_world *plane);
+void mx_scale_car(t_world *plane);
+void mx_scale_gate(t_world *gate);
+void mx_gravitation (t_world *plane);
+
+void mx_initial_state(t_world *gate, t_world *plane);
 
 
 e_scenes mx_menu(SDL_Renderer *renderer);
