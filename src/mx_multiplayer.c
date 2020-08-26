@@ -23,10 +23,9 @@ e_scenes mx_multiplayer(SDL_Window *window, t_state *game) {
                     switch (e.key.keysym.sym) {
                         case SDLK_q:
                             return GAMEOVER_STATE;
-                            // game.exit = 0;
                             break;
                         case SDLK_UP:
-                        game->plane.dy = -2;
+                            game->plane.dy = -2;
                         break;
 
                         default:
