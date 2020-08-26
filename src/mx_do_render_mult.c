@@ -87,8 +87,8 @@ void mx_do_render_mult(SDL_Renderer *rend, t_state *game) {
                  game->renderer,
                  game->font);
     mx_draw_text(score_color_te,
-                 120,
-                 MX_WIND_H - 120,
+                 MX_WIND_W - 120,
+                 20,
                  score_2,
                  game->renderer,
                  game->font);

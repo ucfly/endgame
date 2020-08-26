@@ -57,16 +57,16 @@ e_scenes mx_multiplayer(SDL_Window *window, t_state *game) {
             game->plane.y += 5;
         }
         if (state[SDL_SCANCODE_A]) {
-            game->plane2.x -= 6;
+            game->plane2.x -= 5.5;
         }
         if (state[SDL_SCANCODE_D]) {
-            game->plane2.x += 6;
+            game->plane2.x += 5.5;
         }
         if(state[SDL_SCANCODE_W]){
-            game->plane2.y -= 6;
+            game->plane2.y -= 5.5;
         }
         if(state[SDL_SCANCODE_S]){
-            game->plane2.y += 6;
+            game->plane2.y += 5.5;
         }
         mx_play_game_mult(game);
         mx_do_render_mult(game->renderer, game);

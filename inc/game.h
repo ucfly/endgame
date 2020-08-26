@@ -103,8 +103,8 @@ typedef struct s_world {
 typedef struct s_state {
     // objects
     t_world plane;
-    t_world gate;
     t_world plane2;
+    t_world gate;
     t_world gate2;
     t_world space;
     t_world heart;
