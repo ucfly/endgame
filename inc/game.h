@@ -30,6 +30,8 @@
 #define MX_R_BOARD 3
 #define MX_R_EXIT -1
 
+#define HEART "resource/img/heart.png"
+
 #define CIRCLE  "resource/img/circles/circle_orange.png"
 #define CIRCLE2  "resource/img/circles/circle_green.png"
 
@@ -101,6 +103,7 @@ typedef struct s_state {
     t_world plane2;
     t_world gate2;
     t_world space;
+    t_world heart;
 
     // imgs
     SDL_Texture *bg;
@@ -108,6 +111,7 @@ typedef struct s_state {
     SDL_Texture *car2;
     SDL_Texture *gate_img;
     SDL_Texture *gate2_img;
+    SDL_Texture *heart_img;
 
     SDL_Renderer *renderer;
     Mix_Music *bg_music;

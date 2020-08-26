@@ -64,6 +64,15 @@ void mx_load_game(t_state *game) {
 
     game->car2 = SDL_CreateTextureFromSurface(game->renderer, surf);
 
+    surf = IMG_Load(HEART);
+    if (surf == NULL) {
+        mx_printerr("Can't load heart");
+        SDL_Quit();
+        exit(1);
+    }
+    game->heart_img = SDL_CreateTextureFromSurface(game->renderer, surf);
+
+
     SDL_FreeSurface(surf);
 
     game->plane.x = MX_PLANE_ST_X;
@@ -79,13 +88,15 @@ void mx_load_game(t_state *game) {
     game->gate.x = MX_RANDOM_X;
     game->gate.y = MX_RANDOM_Y;
     game->gate.w = MX_RING_W;
-    game->gate.h = MX_RING_H ;
-
+    game->gate.h = MX_RING_H;
     game->space.x = 0;
     game->space.y = 0;
     game->space.w = MX_WIND_W;
     game->space.h = MX_WIND_H;
     game->plane.life = GAME_LIFE;
     game->plane2.life = GAME_LIFE;
+
+    game->heart.w = 30;
+    game->heart.h = 30;
     // SDL_FreeSurface(surf);
 }

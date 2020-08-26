@@ -25,8 +25,6 @@ void mx_do_render(SDL_Renderer *rend, t_state *game) {
                         game->plane.h};
     // SDL_RenderFillRect(rend, &plane_p);
     SDL_RenderCopy(rend, game->car, NULL, &plane_p);
-
-    // TTF_CloseFont(game->font); 
     
     SDL_Color score_color = ORANGE;
 
