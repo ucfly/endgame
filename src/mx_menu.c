@@ -13,8 +13,8 @@ e_scenes mx_menu(SDL_Renderer *renderer) {
     }
 
     TTF_Font *font = TTF_OpenFont("resource/font/Russo_One.ttf", 35);
-    SDL_Color color = TEAL;
-    SDL_Color color_selected = ORANGE;
+    SDL_Color color = BLACK;
+    SDL_Color color_selected = WHITE;
 
     SDL_Texture *menu_bg =
         IMG_LoadTexture(renderer, "resource/img/empty_back.png");
