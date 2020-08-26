@@ -72,7 +72,7 @@ void mx_load_game(t_state *game) {
     game->plane.h = MX_PLANE_H;
     game->plane.dy = 0;
     game->plane.dw = 0;
-    game->plane.cnt_int = 0;
+    game->plane.cnt = 0;
 
     game->plane2 = game->plane;
 
