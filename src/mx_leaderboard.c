@@ -7,19 +7,23 @@ e_scenes mx_leaderboard(SDL_Renderer *renderer) {
     e_scenes result = MENU_STATE;
     int index = 1;
 
-    TTF_Font *font = TTF_OpenFont("resource/font/Sansation-Bold.ttf", 25);
-    SDL_Color color = TEAL;
-    SDL_Color color_selected = ORANGE;
+    TTF_Font *font = TTF_OpenFont("resource/font/Russo_One.ttf", 35);
+    SDL_Color color = BLACK;
+    SDL_Color color_selected = WHITE;
 
     SDL_Texture *menu_bg =
         IMG_LoadTexture(renderer, "resource/img/empty_back.png");
     SDL_Texture *btn_img = IMG_LoadTexture(renderer, "resource/img/empty.PNG");
 
     SDL_Rect backgroundRect = {0, 0, MX_WIND_W, MX_WIND_H};
-    SDL_Rect play_btn = {MX_BTN_X, MX_BTN_Y, MX_BTN_W , MX_BTN_H};
-    SDL_Rect exit_btn = {MX_BTN_X, MX_BTN_Y + MX_BTN_H, MX_BTN_W, MX_BTN_H};
-    SDL_Rect board_btn = {MX_BTN_X, MX_BTN_Y + MX_BTN_H / 2, MX_BTN_W, MX_BTN_H};
-
+    // SDL_Rect play_btn = {MX_BTN_X, MX_BTN_Y, MX_BTN_W , MX_BTN_H};
+    // SDL_Rect exit_btn = {MX_BTN_X, MX_BTN_Y + MX_BTN_H, MX_BTN_W, MX_BTN_H};
+    // SDL_Rect board_btn = {MX_BTN_X, MX_BTN_Y + MX_BTN_H / 2, MX_BTN_W, MX_BTN_H};
+    SDL_Rect play_btn = {MX_BTN_X, MX_BTN_Y - 70, MX_BTN_W, MX_BTN_H};
+    SDL_Rect board_btn = {MX_BTN_X, MX_BTN_Y -5 , MX_BTN_W,
+                          MX_BTN_H};
+    SDL_Rect exit_btn = {MX_BTN_X, MX_BTN_Y + 60 , MX_BTN_W,
+                          MX_BTN_H};
     while (running) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_KEYUP) {
@@ -49,22 +53,39 @@ e_scenes mx_leaderboard(SDL_Renderer *renderer) {
         SDL_RenderCopy(renderer, btn_img, NULL, &exit_btn);
         
         if (index == 1) {
-            mx_draw_text(color_selected, play_btn.x + 40, play_btn.y+50, "FIRST", renderer, font);
-            mx_draw_text(color, board_btn.x + 40 , board_btn.y+50, "SECOND", renderer, font);
-            mx_draw_text(color, exit_btn.x + 40 , exit_btn.y+50, "THIRD", renderer, font);
-
+            // mx_draw_text(color_selected, play_btn.x + 40, play_btn.y+50, "FIRST", renderer, font);
+            // mx_draw_text(color, board_btn.x + 40 , board_btn.y+50, "SECOND", renderer, font);
+            // mx_draw_text(color, exit_btn.x + 40 , exit_btn.y+50, "THIRD", renderer, font);
+            mx_draw_text(color_selected, play_btn.x + 95, play_btn.y + 5,
+                          "FIRST", renderer, font);
+                mx_draw_text(color, board_btn.x + 80, board_btn.y + 5,
+                          "SECOND", renderer, font);
+                mx_draw_text(color, exit_btn.x + 90, exit_btn.y + 5,
+                          "THIRD", renderer, font);
            
         } else if (index == 2) {
-            mx_draw_text(color, play_btn.x + 40, play_btn.y+50, "FIRST", renderer, font);
-            mx_draw_text(color_selected,board_btn.x + 40 , board_btn.y+50, "SECOND", renderer, font);
-            mx_draw_text(color, exit_btn.x + 40, exit_btn.y+50, "THIRD", renderer, font);
+            // mx_draw_text(color, play_btn.x + 40, play_btn.y+50, "FIRST", renderer, font);
+            // mx_draw_text(color_selected,board_btn.x + 40 , board_btn.y+50, "SECOND", renderer, font);
+            // mx_draw_text(color, exit_btn.x + 40, exit_btn.y+50, "THIRD", renderer, font);
+
+            mx_draw_text(color, play_btn.x + 95, play_btn.y + 5,
+                          "FIRST", renderer, font);
+                mx_draw_text(color_selected, board_btn.x + 80, board_btn.y + 5,
+                          "SECOND", renderer, font);
+                mx_draw_text(color, exit_btn.x + 90, exit_btn.y + 5,
+                          "THIRD", renderer, font);
 
         
         } else if (index == 3) {
-            mx_draw_text(color, play_btn.x + 40, play_btn.y+50, "FIRST", renderer, font);
-            mx_draw_text(color, board_btn.x + 40, board_btn.y+50, "SECOND", renderer, font);
-            mx_draw_text(color_selected, exit_btn.x + 40, exit_btn.y+50, "THIRD", renderer, font);
-
+            // mx_draw_text(color, play_btn.x + 40, play_btn.y+50, "FIRST", renderer, font);
+            // mx_draw_text(color, board_btn.x + 40, board_btn.y+50, "SECOND", renderer, font);
+            // mx_draw_text(color_selected, exit_btn.x + 40, exit_btn.y+50, "THIRD", renderer, font);
+            mx_draw_text(color, play_btn.x + 95, play_btn.y + 5,
+                          "FIRST", renderer, font);
+                mx_draw_text(color, board_btn.x + 80, board_btn.y + 5,
+                          "SECOND", renderer, font);
+                mx_draw_text(color_selected, exit_btn.x + 90, exit_btn.y + 5,
+                          "THIRD", renderer, font);
         } 
         
         usleep(100);
