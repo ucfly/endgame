@@ -23,6 +23,16 @@
 #define MX_BTN_X ((MX_WIND_W - MX_BTN_W) / 2)
 #define MX_BTN_Y (MX_WIND_H / 2 - MX_BTN_H)
 
+#define MX_R_MENU 0
+#define MX_R_GAME 1
+#define MX_R_OVER 2
+#define MX_R_BOARD 3
+#define MX_R_EXIT -1
+
+// colors
+#define TEAL {10, 128, 128, 0}
+#define ORANGE {255, 100, 0, 0}
+
 // includes
 #include <SDL2_image/SDL_image.h>
 #include <SDL2/SDL.h>
@@ -48,6 +58,7 @@ typedef struct s_world {
     int cnt;
     float dy;
     int dw;
+    char *hello;
 }              t_world;
 
 
@@ -64,6 +75,8 @@ typedef struct s_state {
 
     SDL_Renderer *renderer;
     Mix_Music *bg_music;
+    TTF_Font *font;
+    
     int play;
     int exit;
     

@@ -19,12 +19,29 @@ int main(void) {
         wind, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
     mx_load_game(&game);
-
-    game.exit = 0;
-    game.play = 0;
-    srand(time(0));
-    // int foo = 0;
     Mix_PlayMusic(game.bg_music, -1);
+
+    srand(time(0));
+
+    // game.exit = 0;
+    game.play = MX_R_MENU;
+
+    // while(game.play != MX_R_EXIT) {
+    //     game.play = show_menu(game.renderer);
+
+    //     switch(game.play) {
+    //         case MX_R_GAME:
+    //             printf("\n GAME\n");
+    //             break;
+    //         case MX_R_OVER:
+    //             printf("\nG OVER\n");
+    //             break;
+    //         case MX_R_BOARD:
+    //             printf("\nLEADERS\n");
+    //             break;
+            
+    //     }
+    // }
 
     while (game.exit != 4) {
         // game.play = 0;
@@ -79,6 +96,7 @@ int main(void) {
     IMG_Quit();
     TTF_Quit();
     Mix_CloseAudio();
+    TTF_CloseFont(game.font);
     SDL_Quit();
 
     system("leaks -q game");

@@ -67,12 +67,20 @@ static void scale_car(t_state *game) {
     }
 }
 
+// static void render_score(t_state *game) {
+
+//     TTF_Font *font = TTF_OpenFont("resource/font/Sansation-Bold.ttf", 25);
+//     SDL_Color score_color = ORANGE;
+//     draw_text (score_color, 20, 20, "SCORE: ", game->renderer, font);
+//     draw_text (score_color, 120, 20,  game->plane.hello, game->renderer, font);
+//     // SDL_RenderPresent(game->renderer);
+// }
 
 static void is_over(t_state *game) {
     switch (game->plane.dw) {
     case 1: 
         game->plane.cnt++;
-        break;
+        game->plane.hello = "kukusiki \n";
     case -1:
         write(1, "\numir\n", 6);
         break;
@@ -81,8 +89,41 @@ static void is_over(t_state *game) {
     }
 }
 
+void mx_score_to_str(t_state *game){
+    char *result = NULL;
+    int leng;
+    int cnt = game->plane.cnt;
+    int dig;
+
+    for (leng = 1; cnt > 0; leng++) {
+        cnt /= 10;
+    }
+
+   result = (char*)malloc(leng+1);
+    if (result == NULL) {
+        exit(1);
+    }
+
+    cnt = game->plane.cnt;
+
+    for (int i = leng; i < 0; i--) {
+        dig = cnt % 10;
+        cnt /= 10;
+
+        result[i] = '\0';
+        if (i != leng)
+            result[i] = dig;
+    }
+
+    game->plane.hello = result;
+    free(result);
+}
+
+
 void mx_play_game(t_state *game) {
     gravitation (game);
+    
+    mx_score_to_str(game);
 
     if (game->gate.w < MX_PLANE_W + 80) {
         scale_gate(game);

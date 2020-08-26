@@ -13,6 +13,8 @@ void mx_load_game(t_state *game) {
     }
     game->bg_music = namemusic;
 
+    game->font = TTF_OpenFont("resource/font/Sansation-Bold.ttf", 25);
+
     // space bg:
     surf = IMG_Load("resource/img/space_bg.jpg");
     if (surf == NULL) {
@@ -53,6 +55,7 @@ void mx_load_game(t_state *game) {
     game->plane.dy = 0;
     game->plane.dw = 0;
     game->plane.cnt = 0;
+    game->plane.hello = "0";
 
     game->gate.x = MX_RANDOM_X;
     game->gate.y = MX_RANDOM_Y;
