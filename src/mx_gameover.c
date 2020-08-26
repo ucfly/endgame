@@ -69,12 +69,12 @@ e_scenes mx_gameover(SDL_Renderer *renderer) {
 
         
         if (index_menu == 1) {
-            mx_draw_text(color_selected, replay_btn.x + 80, replay_btn.y+5, "REPLAY", renderer, font);
-            mx_draw_text(color, menu_btn.x + 100 , menu_btn.y+5, "MENU", renderer, font);
+            mx_draw_text(color_selected, replay_btn.x + 75, replay_btn.y+5, "REPLAY", renderer, font);
+            mx_draw_text(color, menu_btn.x + 90 , menu_btn.y+5, "MENU", renderer, font);
            
         } else if (index_menu == 2) {
-            mx_draw_text(color, replay_btn.x + 80, replay_btn.y+5, "REPLAY", renderer, font);
-            mx_draw_text(color_selected, menu_btn.x + 100 , menu_btn.y+5, "MENU", renderer, font);
+            mx_draw_text(color, replay_btn.x + 75, replay_btn.y+5, "REPLAY", renderer, font);
+            mx_draw_text(color_selected, menu_btn.x + 90 , menu_btn.y+5, "MENU", renderer, font);
 
         }
         
