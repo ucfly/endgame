@@ -1,6 +1,4 @@
 #include "game.h"
-// #include <stdbool.h>
-
 
 e_scenes mx_menu(SDL_Renderer *renderer) {
     int running = 1;
@@ -8,28 +6,31 @@ e_scenes mx_menu(SDL_Renderer *renderer) {
     e_scenes result = MENU_STATE;
     int index_menu = 1;
 
-    TTF_Init();
+
     if (TTF_Init() == -1) {
         printf("TTF_Init: %s\n", TTF_GetError());
         exit(1);
     }
 
-    TTF_Font *font = TTF_OpenFont("resource/font/Sansation-Bold.ttf", 25);
+    TTF_Font *font = TTF_OpenFont("resource/font/Russo_One.ttf", 35);
     SDL_Color color = TEAL;
     SDL_Color color_selected = ORANGE;
 
     SDL_Texture *menu_bg =
         IMG_LoadTexture(renderer, "resource/img/empty_back.png");
-    SDL_Texture *btn_img = IMG_LoadTexture(renderer, "resource/img/empty.PNG");
+    SDL_Texture *btn_img = IMG_LoadTexture(renderer, "resource/img/empty.png");
 
     SDL_Rect backgroundRect = {0, 0, MX_WIND_W, MX_WIND_H};
 
-    SDL_Rect play_btn = {MX_BTN_X, MX_BTN_Y - 20, MX_BTN_W, MX_BTN_H};
-    SDL_Rect mult_btn = {MX_BTN_X, MX_BTN_Y + 40, MX_BTN_W,
+
+
+    SDL_Rect play_btn = {MX_BTN_X, MX_BTN_Y - 70, MX_BTN_W, MX_BTN_H};
+    SDL_Rect mult_btn = {MX_BTN_X, MX_BTN_Y -5 , MX_BTN_W,
                           MX_BTN_H};
-    SDL_Rect board_btn = {MX_BTN_X, MX_BTN_Y + 100, MX_BTN_W,
+    SDL_Rect board_btn = {MX_BTN_X, MX_BTN_Y + 60 , MX_BTN_W,
                           MX_BTN_H};
-    SDL_Rect exit_btn = {MX_BTN_X, MX_BTN_Y + MX_BTN_H + 10, MX_BTN_W, MX_BTN_H};
+    SDL_Rect exit_btn = {MX_BTN_X, MX_BTN_Y + MX_BTN_H + 65 , MX_BTN_W, MX_BTN_H};
+
 
     while (running) {
         while (SDL_PollEvent(&event)) {
@@ -81,45 +82,45 @@ e_scenes mx_menu(SDL_Renderer *renderer) {
         
         switch (index_menu) {
             case 1:
-                mx_draw_text(color_selected, play_btn.x + 40, play_btn.y + 50,
+                mx_draw_text(color_selected, play_btn.x + 100, play_btn.y + 5,
                           "PLAY", renderer, font);
-                mx_draw_text(color, mult_btn.x + 40, mult_btn.y + 50,
+                mx_draw_text(color, mult_btn.x + 20, mult_btn.y + 5,
                           "MULTIPLAYER", renderer, font);
-                mx_draw_text(color, board_btn.x + 40, board_btn.y + 50,
+                mx_draw_text(color, board_btn.x + 15, board_btn.y + 5,
                           "LEADERBOARD", renderer, font);
-                mx_draw_text(color, exit_btn.x + 40, exit_btn.y + 50, "QUIT",
+                mx_draw_text(color, exit_btn.x + 100, exit_btn.y + 5, "QUIT",
                           renderer, font);
                 break;
 
             case 2:
-                mx_draw_text(color, play_btn.x + 40, play_btn.y + 50, "PLAY",
+                mx_draw_text(color, play_btn.x + 100, play_btn.y + 5, "PLAY",
                           renderer, font);
-                mx_draw_text(color_selected, mult_btn.x + 40, mult_btn.y + 50,
+                mx_draw_text(color_selected, mult_btn.x + 20, mult_btn.y + 5,
                           "MULTIPLAYER", renderer, font);
-                mx_draw_text(color, board_btn.x + 40, board_btn.y + 50,
+                mx_draw_text(color, board_btn.x + 15, board_btn.y + 5,
                           "LEADERBOARD", renderer, font);
-                mx_draw_text(color, exit_btn.x + 40, exit_btn.y + 50, "QUIT",
+                mx_draw_text(color, exit_btn.x + 100, exit_btn.y + 5, "QUIT",
                           renderer, font);
                 break;
 
             case 3:
-                mx_draw_text(color, play_btn.x + 40, play_btn.y + 50, "PLAY",
+                mx_draw_text(color, play_btn.x + 100, play_btn.y + 5, "PLAY",
                           renderer, font);
-                mx_draw_text(color, mult_btn.x + 40, mult_btn.y + 50,
+                mx_draw_text(color, mult_btn.x + 20, mult_btn.y + 5,
                           "MULTIPLAYER", renderer, font);
-                mx_draw_text(color_selected, board_btn.x + 40, board_btn.y + 50,
+                mx_draw_text(color_selected, board_btn.x + 15, board_btn.y + 5,
                           "LEADERBOARD", renderer, font);
-                mx_draw_text(color, exit_btn.x + 40, exit_btn.y + 50,
+                mx_draw_text(color, exit_btn.x + 100, exit_btn.y + 5,
                           "QUIT", renderer, font);
                 break;
             case 4:
-                mx_draw_text(color, play_btn.x + 40, play_btn.y + 50, "PLAY",
+                mx_draw_text(color, play_btn.x + 100, play_btn.y + 5, "PLAY",
                           renderer, font);
-                mx_draw_text(color, mult_btn.x + 40, mult_btn.y + 50,
+                mx_draw_text(color, mult_btn.x + 20, mult_btn.y + 5,
                           "MULTIPLAYER", renderer, font);
-                mx_draw_text(color, board_btn.x + 40, board_btn.y + 50,
+                mx_draw_text(color, board_btn.x + 15, board_btn.y + 5,
                           "LEADERBOARD", renderer, font);
-                mx_draw_text(color_selected, exit_btn.x + 40, exit_btn.y + 50,
+                mx_draw_text(color_selected, exit_btn.x + 100, exit_btn.y + 5,
                           "QUIT", renderer, font);
                 break;
             default:
