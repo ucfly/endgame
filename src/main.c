@@ -53,7 +53,6 @@ int main(void) {
                 printf("EXIT");
                 break;
         }
-        printf("\n kuku: %d", game.exit);
     }
 
     SDL_DestroyTexture(game.bg);
