@@ -1,7 +1,7 @@
 # ======== variables ========
 
 # -- files and dirs --
-NAME = game
+NAME = endgame
 
 INC_DIR = inc
 SRC_DIR = src
@@ -31,8 +31,10 @@ all: $(NAME)
 
 $(NAME): $(SRC_FILES) $(INC_DIR) $(REC_DIR)
 	@$(CC) $(C_FLAGS) $(FFLAGS) $(SRC_FILES) -I $(INC_DIR) -o $(NAME)
+	@printf "\r\33[2K$@\t \033[32;1mcreated\033[0m\n"
 	
 uninstall:
 	@$(RM) $(NAME)
+	@printf "\r\33[2K$(NAME)\t \033[32;1mdeleted\033[0m\n"
 
 reinstall: uninstall all
