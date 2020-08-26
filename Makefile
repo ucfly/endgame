@@ -13,7 +13,7 @@ FFLAGS = -F ./resource/frameworks -framework SDL2 -rpath ./resource/frameworks \
 	 -F ./resource/frameworks -framework SDL2_ttf -rpath ./resource/frameworks \
 	 -F ./resource/frameworks -framework SDL2_mixer -rpath ./resource/frameworks \
 
-# INC_FILES = $(wildcard $(INC_DIR)/*.h)
+INC_FILES = $(wildcard $(INC_DIR)/*.h)
 SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
 
 # -- commands --

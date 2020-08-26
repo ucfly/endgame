@@ -7,7 +7,7 @@ e_scenes mx_game(SDL_Window *window, t_state *game) {
     game->plane.life = 3;
     game->plane.cnt = 0;
     while (running) {
-        while (SDL_PollEvent(&e)) {
+        if (SDL_PollEvent(&e)) {
             switch (e.type) {
                 case SDL_WINDOWEVENT_CLOSE:
                     if (window) {

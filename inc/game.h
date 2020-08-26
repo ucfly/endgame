@@ -33,6 +33,7 @@
 // colors
 #define TEAL {10, 128, 128, 0}
 #define ORANGE {255, 100, 0, 0}
+#define GREEN {144, 178, 71, 0}
 
 // includes
 #include <SDL2_image/SDL_image.h>
@@ -67,7 +68,7 @@ typedef struct s_calculation {
     int rem;
     int size;
     int i;
-}              t_calculation
+}              t_calculation;
 
 typedef struct s_world {
     float x;
@@ -111,7 +112,6 @@ typedef struct s_state {
 
 // funcs
 char *mx_strcpy(char *dst, const char *src);
-char *mx_int_to_str(int n);
 
 void mx_do_render(SDL_Renderer *rend, t_state *game);
 void mx_do_render_mult(SDL_Renderer *rend, t_state *game);
@@ -130,7 +130,7 @@ void mx_scale_car(t_world *plane);
 void mx_scale_gate(t_world *gate);
 void mx_gravitation (t_world *plane);
 
-void *mx_int_to_str(int n, char *target);
+char *mx_int_to_str(int n);
 void mx_initial_state(t_world *gate, t_world *plane);
 
 

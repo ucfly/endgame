@@ -44,14 +44,42 @@ void mx_do_render_mult(SDL_Renderer *rend, t_state *game) {
 
     // TTF_CloseFont(game->font); 
     
-    SDL_Color score_color = ORANGE;
-    mx_draw_text(score_color, 20, 20, "SCORE: ", game->renderer, game->font);
-    mx_draw_text(score_color, 120, 20, game->plane.hello, game->renderer,
-              game->font);
+    SDL_Color score_color_or = ORANGE;
 
-    mx_draw_text(score_color, 20, MX_WIND_H - 20, "SCORE: ", game->renderer, game->font);
-    mx_draw_text(score_color, 120, MX_WIND_H - 20, game->plane2.hello, game->renderer,
-              game->font);
+    char *score_1 =  mx_int_to_str(game->plane.cnt_int);
+    mx_draw_text(score_color_or,
+                 20,
+                 20,
+                 "SCORE: ",
+                 game->renderer,
+                 game->font);
+    mx_draw_text(score_color_or, 
+                120, 
+                20, 
+                score_1, 
+                game->renderer,
+                game->font);
+    free(score_1);
+    score_1 = NULL;
+
+
+    SDL_Color score_color_te = GREEN;
+
+    char *score_2 = mx_int_to_str(game->plane2.cnt_int);
+    mx_draw_text(score_color_te,
+                 MX_WIND_W - 220,
+                 20,
+                 "SCORE: ",
+                 game->renderer,
+                 game->font);
+    mx_draw_text(score_color_te,
+                 120,
+                 MX_WIND_H - 120,
+                 score_2,
+                 game->renderer,
+                 game->font);
+    free(score_2);
+    score_2 = NULL;
 
     SDL_RenderPresent(rend);
 }
