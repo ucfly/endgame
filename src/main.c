@@ -38,11 +38,15 @@ int main(void) {
                 break;
             case GAMEOVER_STATE:
                 game.status = mx_gameover(game.renderer);
-                printf("GAME OWER!!!");
+                // printf("GAME OWER!!!");
+                break;
+            case MULTIPLAYER_STATE:
+                game.status = mx_multiplayer(wind, &game);
+                // printf("GAME OWER!!!");
                 break;
             case LEADERBOARD_STATE:
                 game.status = mx_leaderboard(game.renderer);
-                printf("LEADERBOARD!!!");
+                // printf("LEADERBOARD!!!");
                 break;
             case EXIT_STATE:
                 game.exit = 1;
