@@ -12,7 +12,7 @@ e_scenes mx_gameover(SDL_Renderer *renderer) {
         exit(1);
     }
 
-    TTF_Font *font = TTF_OpenFont("resource/font/Sansation-Bold.ttf", 25);
+    TTF_Font *font = TTF_OpenFont("resource/font/Russo_One.ttf", 35);
     SDL_Color color = TEAL;
     SDL_Color color_selected = ORANGE;
 
