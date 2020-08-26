@@ -33,8 +33,8 @@
 #define CIRCLE  "resource/img/circles/circle_orange.png"
 #define CIRCLE2  "resource/img/circles/circle_green.png"
 
-#define PLANE  "resource/img/space_car.png"
-#define PLANE2  "resource/img/space_car2.png"
+#define PLANE  "resource/img/car_blue.png"
+#define PLANE2  "resource/img/car_green.png"
 
 #define BACKGROUND_IMG "resource/img/space_bg.jpg"
 
